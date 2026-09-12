@@ -321,6 +321,32 @@ export function AntibioticMechanismDiagram() {
   );
 }
 
+// 9b. Beta-lactam mechanism: PBP/transpeptidation inhibition and beta-lactamase resistance
+export function BetaLactamDiagram() {
+  return (
+    <svg viewBox="0 0 460 280" className="w-full" role="img" aria-label="Beta-lactam mechanism showing PBP transpeptidation inhibition and beta-lactamase resistance">
+      <ArrowDefs />
+      <Step x={145} y={8} w={170} h={40} label="PBP (transpeptidase)" sub="cross-links peptidoglycan (D-Ala-D-Ala)" color={teal} />
+      <Arrow x1={190} y1={48} x2={150} y2={70} />
+      <Arrow x1={270} y1={48} x2={310} y2={70} />
+
+      <Step x={15} y={70} w={200} h={40} label="Beta-lactam binds PBP" sub="structural mimic of D-Ala-D-Ala" color={amber} />
+      <Arrow x1={115} y1={110} x2={115} y2={126} />
+      <Step x={15} y={126} w={200} h={44} label="PBP irreversibly acylated" sub="cross-linking blocked" color={rose} />
+      <Arrow x1={115} y1={170} x2={115} y2={186} />
+      <Step x={15} y={186} w={200} h={40} label="Cell wall weakens" sub="osmotic lysis — bactericidal" color={rose} />
+
+      <Step x={245} y={70} w={200} h={40} label="Bacterial beta-lactamase" sub="hydrolyzes the beta-lactam ring" color={violet} />
+      <BlockMarker x={345} y={132} center label={["Clavulanate / sulbactam /", "tazobactam block this enzyme"]} />
+      <Arrow x1={290} y1={110} x2={290} y2={180} />
+      <Step x={245} y={180} w={200} h={40} label="Beta-lactam destroyed" sub="PBP never inhibited — resistance" color={violet} />
+
+      <text x="230" y="252" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">Beta-lactams only work if they reach an intact PBP before beta-lactamase destroys them</text>
+      <text x="230" y="264" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">Pairing with a beta-lactamase inhibitor restores activity against beta-lactamase-producing strains</text>
+    </svg>
+  );
+}
+
 // 10. Insulin signaling & antidiabetic drug targets
 export function InsulinSignalingDiagram() {
   return (
