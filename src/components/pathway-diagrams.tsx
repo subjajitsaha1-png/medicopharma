@@ -297,6 +297,33 @@ export function OpioidDiagram() {
   );
 }
 
+// 8b. Opioid mu-receptor signaling cascade (GPCR -> Gi -> cAMP -> effects)
+export function OpioidSignalingDiagram() {
+  return (
+    <svg viewBox="0 0 460 336" className="w-full" role="img" aria-label="Opioid mu-receptor GPCR signaling cascade through Gi protein, decreased cAMP, to decreased neurotransmitter release and hyperpolarization">
+      <ArrowDefs />
+      <Step x={145} y={8} w={170} h={40} label="Opioid binds mu-receptor" sub="Gi-coupled GPCR" color={violet} />
+      <Arrow x1={230} y1={48} x2={230} y2={70} />
+
+      <Step x={145} y={70} w={170} h={40} label="Gi protein activated" sub="inhibits adenylyl cyclase" color={violet} />
+      <Arrow x1={230} y1={110} x2={230} y2={132} />
+
+      <Step x={145} y={132} w={170} h={36} label="↓ cAMP" sub="↓ PKA activity" color={violet} />
+      <Arrow x1={190} y1={168} x2={130} y2={190} />
+      <Arrow x1={270} y1={168} x2={330} y2={190} />
+
+      <Step x={15} y={190} w={190} h={40} label="↓ Ca2+ influx" sub="presynaptic terminal" color={amber} />
+      <Step x={255} y={190} w={190} h={40} label="↑ K+ efflux" sub="postsynaptic membrane" color={rose} />
+
+      <Arrow x1={110} y1={230} x2={170} y2={250} />
+      <Arrow x1={350} y1={230} x2={290} y2={250} />
+      <Step x={105} y={250} w={250} h={44} label="↓ Neurotransmitter release + hyperpolarization" sub="↓ pain signal transmission = analgesia" color={emerald} />
+
+      <text x="230" y="316" textAnchor="middle" fontSize="8" fontWeight={700} fill="var(--color-muted-foreground)">Naloxone competitively displaces opioid from the mu-receptor, reversing this entire cascade</text>
+    </svg>
+  );
+}
+
 // 9. Antibiotic mechanism sites
 export function AntibioticMechanismDiagram() {
   return (
