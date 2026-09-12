@@ -3,6 +3,7 @@ import { ChevronDown, ListTree, Search } from "lucide-react";
 import { TOPICS } from "@/data/facts";
 import { DRUG_CLASSIFICATION, type ClassNode, type ClassificationSection } from "@/data/drug-classification";
 import { TOPIC_PALETTE, type PaletteColor } from "@/lib/palette";
+import { BoxedSection } from "@/components/section-block";
 
 function topicColor(topicId: string) {
   const index = TOPICS.findIndex((t) => t.id === topicId);
@@ -51,12 +52,9 @@ function SectionCard({ section, color, query }: { section: ClassificationSection
   const visible = section.tree.some((n) => matches(n, query));
   if (!visible) return null;
   return (
-    <div style={{ borderTopColor: color.ring }} className="rounded-xl border border-border border-t-4 bg-card p-4 shadow-sm sm:p-5">
-      <h3 className="font-display text-lg text-card-foreground">{section.title}</h3>
-      <div className="mt-2">
-        {section.tree.map((n, i) => <NodeRow key={i} node={n} depth={0} query={query} />)}
-      </div>
-    </div>
+    <BoxedSection icon={<ListTree size={14} />} label={section.title} color={color}>
+      {section.tree.map((n, i) => <NodeRow key={i} node={n} depth={0} query={query} />)}
+    </BoxedSection>
   );
 }
 

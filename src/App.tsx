@@ -529,7 +529,10 @@ function DrugReference() {
         <Modal title={openValue.parameter} color={topicColor(openValue.topicId)} onClose={() => setOpenValue(null)}>
           <p className="text-left font-display text-2xl text-card-foreground">{openValue.parameter}</p>
           <p style={{ backgroundColor: topicColor(openValue.topicId).bg, color: topicColor(openValue.topicId).fg }} className="mt-3 inline-block rounded-md px-3 py-1 text-sm font-semibold">{openValue.value}</p>
-          <p className="mt-4 text-left text-sm leading-relaxed text-card-foreground">{openValue.note}</p>
+          <div style={{ borderLeftColor: topicColor(openValue.topicId).ring, borderLeftWidth: 4 }} className="mt-4 rounded-lg border border-border bg-muted/30 p-3.5 text-left">
+            <p className="text-[10px] font-bold uppercase tracking-wide text-muted-foreground">Exam note</p>
+            <p className="mt-1 text-sm leading-relaxed text-card-foreground">{openValue.note}</p>
+          </div>
           <FurtherReading topicName={openValue.parameter} color={topicColor(openValue.topicId)} />
         </Modal>
       )}

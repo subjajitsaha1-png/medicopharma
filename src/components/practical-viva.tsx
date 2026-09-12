@@ -4,8 +4,13 @@ import { TOPICS } from "@/data/facts";
 import { PRESCRIPTION_TOPICS, CAL_EXPERIMENTS, SPOTTERS, VIVA_TOPICS } from "@/data/practical-viva";
 import { TOPIC_PALETTE, type PaletteColor } from "@/lib/palette";
 import { Button } from "@/components/ui/button";
+import { BoxedSection, SectionHeader, SectionBody } from "@/components/section-block";
 
 type SubTab = "prescriptions" | "cal" | "spotters" | "viva";
+
+const PRESCRIPTION_COLOR = TOPIC_PALETTE[8]!;
+const CAL_COLOR = TOPIC_PALETTE[9]!;
+const SPOTTER_COLOR = TOPIC_PALETTE[10]!;
 
 function topicColor(topicId: string) {
   const index = TOPICS.findIndex((t) => t.id === topicId);
@@ -24,15 +29,15 @@ function SubTabButton({ active, onClick, icon, label, count }: { active: boolean
 
 function PrescriptionList() {
   return (
-    <div className="space-y-3">
+    <BoxedSection icon={<FileText size={15} />} label="Prescription-Writing Cases" color={PRESCRIPTION_COLOR}>
       <p className="text-xs leading-relaxed text-muted-foreground">
         Classic case-based prescription topics. For each, practice writing a complete prescription — patient details, superscription (Rx), drug name/dose/route/frequency/duration, and signature — plus be ready to justify the choice.
       </p>
-      <ol className="space-y-3">
+      <ol className="mt-3 space-y-3">
         {PRESCRIPTION_TOPICS.map((p, i) => (
-          <li key={p.id} className="rounded-xl border border-border bg-card p-4 shadow-sm">
+          <li key={p.id} className="rounded-lg border border-border bg-muted/20 p-3.5">
             <div className="flex items-start gap-3">
-              <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-muted text-xs font-bold text-muted-foreground">{i + 1}</span>
+              <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-muted text-xs font-bold text-muted-foreground">{i + 1}</span>
               <div className="flex-1">
                 <p className="text-sm font-bold text-card-foreground">{p.condition}</p>
                 <p className="mt-1 text-xs leading-relaxed text-muted-foreground"><span className="font-semibold text-card-foreground">Write for:</span> {p.drugsToWrite}</p>
@@ -42,21 +47,21 @@ function PrescriptionList() {
           </li>
         ))}
       </ol>
-    </div>
+    </BoxedSection>
   );
 }
 
 function CalList() {
   return (
-    <div className="space-y-3">
+    <BoxedSection icon={<Microscope size={15} />} label="CAL Experiments" color={CAL_COLOR}>
       <p className="text-xs leading-relaxed text-muted-foreground">
         Since live animal experiments were replaced by Computer-Assisted Learning (CAL) modules and pre-recorded tracings in Indian MBBS pharmacology practicals, these are the standard experiments you'll be shown and questioned on.
       </p>
-      <ol className="space-y-3">
+      <ol className="mt-3 space-y-3">
         {CAL_EXPERIMENTS.map((c, i) => (
-          <li key={c.id} className="rounded-xl border border-border bg-card p-4 shadow-sm">
+          <li key={c.id} className="rounded-lg border border-border bg-muted/20 p-3.5">
             <div className="flex items-start gap-3">
-              <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-muted text-xs font-bold text-muted-foreground">{i + 1}</span>
+              <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-muted text-xs font-bold text-muted-foreground">{i + 1}</span>
               <div className="flex-1">
                 <p className="text-sm font-bold text-card-foreground">{c.title}</p>
                 <p className="mt-1 text-xs leading-relaxed text-muted-foreground"><span className="font-semibold text-card-foreground">What it shows:</span> {c.whatItShows}</p>
@@ -66,26 +71,26 @@ function CalList() {
           </li>
         ))}
       </ol>
-    </div>
+    </BoxedSection>
   );
 }
 
 function SpotterGrid() {
   return (
-    <div className="space-y-3">
+    <BoxedSection icon={<Eye size={15} />} label="Spotter Identification" color={SPOTTER_COLOR}>
       <p className="text-xs leading-relaxed text-muted-foreground">
         Common spotters shown for identification — practice naming the item, describing its correct use, and answering the one-line viva point.
       </p>
-      <div className="grid gap-3 sm:grid-cols-2">
+      <div className="mt-3 grid gap-3 sm:grid-cols-2">
         {SPOTTERS.map((s) => (
-          <div key={s.id} className="rounded-xl border border-border bg-card p-4 shadow-sm">
+          <div key={s.id} className="rounded-lg border border-border bg-muted/20 p-3.5">
             <p className="text-sm font-bold text-card-foreground">{s.name}</p>
             <p className="mt-1 text-xs leading-relaxed text-muted-foreground"><span className="font-semibold text-card-foreground">Identify by:</span> {s.identifyBy}</p>
             <p className="mt-1 text-xs leading-relaxed text-muted-foreground"><span className="font-semibold text-card-foreground">Viva point:</span> {s.vivaPoint}</p>
           </div>
         ))}
       </div>
-    </div>
+    </BoxedSection>
   );
 }
 
@@ -105,24 +110,24 @@ function VivaByUnit() {
           {TOPICS.map((t) => <option key={t.id} value={t.id}>{t.name}</option>)}
         </select>
       </div>
-      <div className="space-y-6">
+      <div className="space-y-4">
         {groups.map((g) => {
           const topic = TOPICS.find((t) => t.id === g.topicId);
           const color: PaletteColor = topicColor(g.topicId);
           if (!topic) return null;
           return (
-            <div key={g.topicId}>
-              <div className="mb-2 flex items-center gap-2">
-                <span style={{ backgroundColor: color.bg, color: color.fg }} className="rounded-full px-2.5 py-1 text-xs font-bold">{topic.name}</span>
-              </div>
-              <ol className="space-y-2">
-                {g.questions.map((q, i) => (
-                  <li key={i} className="flex gap-3 rounded-lg border border-border bg-card p-3 text-sm leading-relaxed text-card-foreground">
-                    <span className="shrink-0 text-xs font-bold text-muted-foreground">{i + 1}.</span>
-                    <span>{q}</span>
-                  </li>
-                ))}
-              </ol>
+            <div key={g.topicId} className="overflow-hidden rounded-xl shadow-sm">
+              <SectionHeader icon={<MessageCircleQuestion size={14} />} label={topic.name} sublabel={`${g.questions.length} questions`} color={color} />
+              <SectionBody>
+                <ol className="space-y-2">
+                  {g.questions.map((q, i) => (
+                    <li key={i} className="flex gap-3 rounded-lg border border-border bg-muted/20 p-3 text-sm leading-relaxed text-card-foreground">
+                      <span className="shrink-0 text-xs font-bold text-muted-foreground">{i + 1}.</span>
+                      <span>{q}</span>
+                    </li>
+                  ))}
+                </ol>
+              </SectionBody>
             </div>
           );
         })}
