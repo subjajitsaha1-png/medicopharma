@@ -1270,3 +1270,291 @@ export function OpioidToleranceDiagram() {
   );
 }
 
+// 47. Gout pharmacology: xanthine oxidase, colchicine, uricosurics
+export function GoutDiagram() {
+  return (
+    <svg viewBox="0 0 460 282" className="w-full" role="img" aria-label="Gout pharmacology showing xanthine oxidase inhibition, colchicine, and uricosuric drug sites" >
+      <ArrowDefs />
+      <Step x={145} y={8} w={170} h={40} label="Purine metabolism → uric acid" sub="via xanthine oxidase" color={violet} />
+      <BlockMarker x={315} y={28} labelDx={12} label={["Allopurinol/febuxostat inhibit", "xanthine oxidase"]} />
+      <Arrow x1={230} y1={48} x2={230} y2={70} />
+      <Step x={145} y={70} w={170} h={40} label="Urate crystal deposition" sub="neutrophil-mediated inflammation" color={amber} />
+      <BlockMarker x={145} y={90} labelDx={-12} label={["Colchicine blocks neutrophil", "microtubules/migration"]} />
+      <Arrow x1={230} y1={110} x2={230} y2={132} />
+      <Step x={145} y={132} w={170} h={40} label="Renal urate handling" sub="reabsorption vs excretion" color={teal} />
+      <BlockMarker x={315} y={152} labelDx={12} label={["Probenecid inhibits urate", "reabsorption (uricosuric)"]} />
+      <Arrow x1={230} y1={172} x2={230} y2={194} />
+      <Step x={105} y={194} w={250} h={40} label="↓ Urate burden, ↓ acute inflammation" color={emerald} />
+
+      <text x="230" y="254" textAnchor="middle" fontSize="8" fontWeight={700} fill="var(--color-muted-foreground)">Allopurinol is never started during an acute attack — mobilizing</text>
+      <text x="230" y="266" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">urate stores can actually worsen the flare</text>
+    </svg>
+  );
+}
+
+// 48. Calcineurin inhibitor immunosuppression
+export function CalcineurinInhibitorDiagram() {
+  return (
+    <svg viewBox="0 0 460 282" className="w-full" role="img" aria-label="Calcineurin inhibitor mechanism blocking IL-2 gene transcription in T cells" >
+      <ArrowDefs />
+      <Step x={145} y={8} w={170} h={40} label="T-cell receptor activation" sub="antigen recognition" color={violet} />
+      <Arrow x1={230} y1={48} x2={230} y2={70} />
+      <Step x={145} y={70} w={170} h={40} label="Calcineurin (phosphatase)" sub="dephosphorylates NFAT" color={amber} />
+      <BlockMarker x={315} y={90} labelDx={12} label={["Cyclosporine / tacrolimus", "block calcineurin"]} />
+      <Arrow x1={230} y1={110} x2={230} y2={132} />
+      <Step x={145} y={132} w={170} h={40} label="NFAT enters nucleus" sub="activates IL-2 gene transcription" color={teal} />
+      <Arrow x1={230} y1={172} x2={230} y2={194} />
+      <Step x={105} y={194} w={250} h={40} label="↓ IL-2 → ↓ T-cell proliferation" sub="immunosuppression" color={emerald} />
+
+      <text x="230" y="254" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">Nephrotoxicity is the major dose-limiting toxicity for both</text>
+      <text x="230" y="266" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">cyclosporine and tacrolimus — levels are monitored closely</text>
+    </svg>
+  );
+}
+
+// 49. Acyclovir nucleoside analog mechanism
+export function AcyclovirMechanismDiagram() {
+  return (
+    <svg viewBox="0 0 460 344" className="w-full" role="img" aria-label="Acyclovir nucleoside analog activation by viral thymidine kinase and DNA chain termination" >
+      <ArrowDefs />
+      <Step x={145} y={8} w={170} h={40} label="Acyclovir enters the cell" color={violet} />
+      <Arrow x1={230} y1={48} x2={230} y2={70} />
+      <Step x={145} y={70} w={170} h={40} label="Viral thymidine kinase" sub="first phosphorylation step" color={amber} />
+      <BlockMarker x={315} y={90} labelDx={12} label={["Only HSV/VZV-infected cells", "have this enzyme — selective"]} />
+      <Arrow x1={230} y1={110} x2={230} y2={132} />
+      <Step x={145} y={132} w={170} h={40} label="Host kinases complete phosphorylation" sub="→ acyclovir triphosphate" color={teal} />
+      <Arrow x1={230} y1={172} x2={230} y2={194} />
+      <Step x={145} y={194} w={170} h={40} label="Incorporated into viral DNA" sub="by viral DNA polymerase" color={rose} />
+      <BlockMarker x={145} y={214} labelDx={-12} label={["Chain termination — no further", "DNA synthesis possible"]} />
+      <Arrow x1={230} y1={234} x2={230} y2={256} />
+      <Step x={105} y={256} w={250} h={40} label="Viral replication halted" color={emerald} />
+
+      <text x="230" y="316" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">This selectivity — needing a viral enzyme for the first step — is why</text>
+      <text x="230" y="328" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">acyclovir has such a wide safety margin in uninfected cells</text>
+    </svg>
+  );
+}
+
+// 50. Neuraminidase inhibitor mechanism
+export function NeuraminidaseInhibitorDiagram() {
+  return (
+    <svg viewBox="0 0 460 222" className="w-full" role="img" aria-label="Neuraminidase inhibitor mechanism blocking influenza viral release from infected cells" >
+      <ArrowDefs />
+      <Step x={145} y={8} w={170} h={40} label="Influenza buds from infected cell" color={violet} />
+      <Arrow x1={230} y1={48} x2={230} y2={70} />
+      <Step x={145} y={70} w={170} h={40} label="Neuraminidase" sub="cleaves sialic acid, releasing virions" color={amber} />
+      <BlockMarker x={315} y={90} labelDx={12} label={["Oseltamivir/zanamivir", "block neuraminidase"]} />
+      <Arrow x1={230} y1={110} x2={230} y2={132} />
+      <Step x={105} y={132} w={250} h={40} label="Virions clump, can't infect new cells" sub="↓ viral spread" color={emerald} />
+
+      <text x="230" y="192" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">Most effective when started within 48 hours of symptom onset —</text>
+      <text x="230" y="204" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">late initiation offers little benefit</text>
+    </svg>
+  );
+}
+
+// 51. Epinephrine in anaphylaxis: combined alpha-1, beta-1, beta-2 action
+export function EpinephrineAnaphylaxisDiagram() {
+  return (
+    <svg viewBox="0 0 460 344" className="w-full" role="img" aria-label="Epinephrine's combined alpha-1, beta-1, and beta-2 actions in reversing anaphylaxis" >
+      <ArrowDefs />
+      <Step x={145} y={8} w={170} h={40} label="Epinephrine (IM, anterolateral thigh)" sub="non-selective adrenergic agonist" color={violet} />
+      <Arrow x1={190} y1={48} x2={150} y2={70} />
+      <Arrow x1={230} y1={48} x2={230} y2={70} />
+      <Arrow x1={270} y1={48} x2={310} y2={70} />
+
+      <Step x={15} y={70} w={130} h={44} label="Alpha-1" sub="vasoconstriction" color={amber} />
+      <BlockMarker x={80} y={132} center label={["↑ BP, ↓ mucosal", "edema/angioedema"]} />
+
+      <Step x={165} y={70} w={130} h={44} label="Beta-1" sub="↑ HR, ↑ contractility" color={teal} />
+      <BlockMarker x={230} y={132} center label={["Reverses", "hypotension/shock"]} />
+
+      <Step x={315} y={70} w={130} h={44} label="Beta-2" sub="bronchodilation" color={rose} />
+      <BlockMarker x={380} y={132} center label={["Relieves bronchospasm,", "↓ mediator release"]} />
+
+      <Arrow x1={80} y1={168} x2={190} y2={200} />
+      <Arrow x1={230} y1={168} x2={230} y2={200} />
+      <Arrow x1={380} y1={168} x2={270} y2={200} />
+      <Step x={105} y={200} w={250} h={40} label="Anaphylactic shock reversed" color={emerald} />
+
+      <text x="230" y="264" textAnchor="middle" fontSize="8" fontWeight={700} fill="var(--color-muted-foreground)">Epinephrine is first-line and given BEFORE antihistamines or</text>
+      <text x="230" y="276" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">steroids — those don't act fast enough for the acute reaction</text>
+    </svg>
+  );
+}
+
+// 52. PDE5 inhibitor mechanism in corpus cavernosum
+export function Pde5InhibitorDiagram() {
+  return (
+    <svg viewBox="0 0 460 282" className="w-full" role="img" aria-label="PDE5 inhibitor mechanism in the NO-cGMP pathway of corpus cavernosum smooth muscle" >
+      <ArrowDefs />
+      <Step x={145} y={8} w={170} h={40} label="Sexual stimulation → NO release" sub="in corpus cavernosum" color={violet} />
+      <Arrow x1={230} y1={48} x2={230} y2={70} />
+      <Step x={145} y={70} w={170} h={40} label="Guanylyl cyclase activated" sub="↑ cGMP" color={amber} />
+      <Arrow x1={230} y1={110} x2={230} y2={132} />
+      <Step x={145} y={132} w={170} h={40} label="PDE5" sub="normally breaks down cGMP" color={teal} />
+      <BlockMarker x={315} y={152} labelDx={12} label={["Sildenafil/tadalafil inhibit", "PDE5 — cGMP persists"]} />
+      <Arrow x1={230} y1={172} x2={230} y2={194} />
+      <Step x={105} y={194} w={250} h={40} label="Smooth muscle relaxation → erection" color={emerald} />
+
+      <text x="230" y="254" textAnchor="middle" fontSize="8" fontWeight={700} fill="var(--color-muted-foreground)">Never combine with nitrates — both raise cGMP through different</text>
+      <text x="230" y="266" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">mechanisms, risking severe, potentially fatal hypotension</text>
+    </svg>
+  );
+}
+
+// 53. Antitussive mechanism at the medullary cough center
+export function AntitussiveDiagram() {
+  return (
+    <svg viewBox="0 0 460 222" className="w-full" role="img" aria-label="Antitussive mechanism suppressing the medullary cough center" >
+      <ArrowDefs />
+      <Step x={145} y={8} w={170} h={40} label="Airway irritation" sub="cough reflex triggered" color={violet} />
+      <Arrow x1={230} y1={48} x2={230} y2={70} />
+      <Step x={145} y={70} w={170} h={40} label="Afferent signal to medulla" sub="cough center" color={amber} />
+      <BlockMarker x={315} y={90} labelDx={12} label={["Dextromethorphan/codeine", "suppress the cough center"]} />
+      <Arrow x1={230} y1={110} x2={230} y2={132} />
+      <Step x={105} y={132} w={250} h={40} label="↓ Cough reflex" color={emerald} />
+
+      <text x="230" y="192" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">Dextromethorphan has minimal analgesic/addictive potential —</text>
+      <text x="230" y="204" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">codeine, a weak opioid, carries more of both</text>
+    </svg>
+  );
+}
+
+// 54. Centrally-acting skeletal muscle relaxants: baclofen vs diazepam
+export function MuscleRelaxantDiagram() {
+  return (
+    <svg viewBox="0 0 460 282" className="w-full" role="img" aria-label="Centrally-acting skeletal muscle relaxant mechanisms comparing baclofen's GABA-B action with diazepam's GABA-A action" >
+      <ArrowDefs />
+      <Step x={145} y={8} w={170} h={40} label="Spinal motor neuron excitability" color={violet} />
+      <Arrow x1={190} y1={48} x2={150} y2={70} />
+      <Arrow x1={270} y1={48} x2={310} y2={70} />
+      <Step x={15} y={70} w={200} h={40} label="GABA-B receptor" sub="presynaptic, spinal cord" color={amber} />
+      <BlockMarker x={110} y={132} center label={["Baclofen agonist here →", "↓ excitatory transmitter release"]} />
+      <Step x={245} y={70} w={200} h={40} label="GABA-A receptor" sub="postsynaptic Cl- channel" color={rose} />
+      <BlockMarker x={350} y={132} center label={["Diazepam enhances here →", "↑ inhibitory tone"]} />
+
+      <text x="230" y="190" textAnchor="middle" fontSize="8" fontWeight={700} fill="var(--color-muted-foreground)">Both reduce muscle spasticity/spasm, but baclofen carries far less</text>
+      <text x="230" y="202" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">sedation and dependence risk than diazepam at typical doses</text>
+    </svg>
+  );
+}
+
+// 55. Anxiolytic mechanism comparison: buspirone vs benzodiazepine
+export function AnxiolyticComparisonDiagram() {
+  return (
+    <svg viewBox="0 0 460 282" className="w-full" role="img" aria-label="Anxiolytic mechanism comparison between buspirone 5-HT1A partial agonism and benzodiazepine GABA-A modulation" >
+      <ArrowDefs />
+      <Step x={145} y={8} w={170} h={40} label="Anxiety symptoms" color={violet} />
+      <Arrow x1={190} y1={48} x2={150} y2={70} />
+      <Arrow x1={270} y1={48} x2={310} y2={70} />
+      <Step x={15} y={70} w={200} h={40} label="5-HT1A receptor" sub="presynaptic autoreceptor" color={amber} />
+      <BlockMarker x={110} y={132} center label={["Buspirone: partial agonist,", "slow onset (2-4 weeks),", "no sedation/dependence"]} />
+      <Step x={245} y={70} w={200} h={40} label="GABA-A receptor" sub="chloride channel" color={rose} />
+      <BlockMarker x={350} y={132} center label={["Benzodiazepine: allosteric", "modulator, rapid onset,", "sedation/dependence risk"]} />
+
+      <text x="230" y="200" textAnchor="middle" fontSize="8" fontWeight={700} fill="var(--color-muted-foreground)">Buspirone suits chronic/generalized anxiety; benzodiazepines</text>
+      <text x="230" y="212" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">are reserved for acute, short-term relief</text>
+    </svg>
+  );
+}
+
+// 56. Iron absorption and anemia pharmacology
+export function IronAbsorptionDiagram() {
+  return (
+    <svg viewBox="0 0 460 282" className="w-full" role="img" aria-label="Duodenal iron absorption via ferroportin, hepcidin regulation, and oral iron therapy" >
+      <ArrowDefs />
+      <Step x={145} y={8} w={170} h={40} label="Dietary iron in duodenum" color={violet} />
+      <Arrow x1={230} y1={48} x2={230} y2={70} />
+      <Step x={145} y={70} w={170} h={40} label="Absorbed into enterocyte" sub="via DMT1 (ferrous form)" color={amber} />
+      <Arrow x1={230} y1={110} x2={230} y2={132} />
+      <Step x={145} y={132} w={170} h={40} label="Ferroportin" sub="exports iron into blood" color={teal} />
+      <BlockMarker x={315} y={152} labelDx={12} label={["Hepcidin (↑ in inflammation)", "degrades ferroportin → anemia", "of chronic disease"]} />
+      <Arrow x1={230} y1={172} x2={230} y2={194} />
+      <Step x={105} y={194} w={250} h={40} label="Iron-transferrin → bone marrow" sub="oral iron corrects true deficiency" color={emerald} />
+
+      <text x="230" y="254" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">Take oral iron on an empty stomach or with vitamin C for better</text>
+      <text x="230" y="266" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">absorption; avoid taking it with antacids or dairy</text>
+    </svg>
+  );
+}
+
+// 57. Vitamin B12/folate metabolism and megaloblastic anemia
+export function B12FolateDiagram() {
+  return (
+    <svg viewBox="0 0 460 282" className="w-full" role="img" aria-label="Vitamin B12 and folate metabolism through methylmalonyl-CoA and homocysteine pathways" >
+      <ArrowDefs />
+      <Step x={145} y={8} w={170} h={40} label="Vitamin B12 (cobalamin)" sub="needs intrinsic factor for absorption" color={violet} />
+      <Arrow x1={230} y1={48} x2={230} y2={70} />
+      <Step x={145} y={70} w={170} h={40} label="Methylmalonyl-CoA → succinyl-CoA" sub="B12-dependent" color={amber} />
+      <BlockMarker x={315} y={90} labelDx={12} label={["B12 deficiency → methylmalonic", "acid accumulates (neuro symptoms)"]} />
+      <Arrow x1={230} y1={110} x2={230} y2={132} />
+      <Step x={145} y={132} w={170} h={40} label="Homocysteine → methionine" sub="needs BOTH B12 and folate" color={teal} />
+      <Arrow x1={230} y1={172} x2={230} y2={194} />
+      <Step x={105} y={194} w={250} h={40} label="Megaloblastic anemia if either is low" color={emerald} />
+
+      <text x="230" y="254" textAnchor="middle" fontSize="8" fontWeight={700} fill="var(--color-muted-foreground)">Giving folate alone in B12 deficiency corrects the anemia but MASKS</text>
+      <text x="230" y="266" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">progression of neurologic damage — a classic exam trap</text>
+    </svg>
+  );
+}
+
+// 58. Heparin-induced thrombocytopenia (HIT) mechanism
+export function HitDiagram() {
+  return (
+    <svg viewBox="0 0 460 282" className="w-full" role="img" aria-label="Heparin-induced thrombocytopenia mechanism through PF4-heparin antibody complexes activating platelets" >
+      <ArrowDefs />
+      <Step x={145} y={8} w={170} h={40} label="Heparin binds platelet factor 4 (PF4)" color={violet} />
+      <Arrow x1={230} y1={48} x2={230} y2={70} />
+      <Step x={145} y={70} w={170} h={40} label="IgG antibody forms" sub="against the PF4-heparin complex" color={amber} />
+      <Arrow x1={230} y1={110} x2={230} y2={132} />
+      <Step x={145} y={132} w={170} h={40} label="Complex binds platelet Fc receptors" color={teal} />
+      <Arrow x1={230} y1={172} x2={230} y2={194} />
+      <Step x={105} y={194} w={250} h={40} label="Platelet activation → thrombosis" sub="paradoxically LOW platelets, HIGH clot risk" color={rose} />
+
+      <text x="230" y="254" textAnchor="middle" fontSize="8" fontWeight={700} fill="var(--color-muted-foreground)">Stop heparin immediately and switch to a non-heparin anticoagulant</text>
+      <text x="230" y="266" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">(argatroban) — never just switch to LMWH, which cross-reacts</text>
+    </svg>
+  );
+}
+
+// 59. Phase I vs Phase II drug metabolism
+export function MetabolismPhasesDiagram() {
+  return (
+    <svg viewBox="0 0 460 282" className="w-full" role="img" aria-label="Phase I oxidation versus Phase II conjugation drug metabolism reactions" >
+      <ArrowDefs />
+      <Step x={145} y={8} w={170} h={40} label="Parent drug" color={violet} />
+      <Arrow x1={230} y1={48} x2={230} y2={70} />
+      <Step x={145} y={70} w={170} h={40} label="Phase I: oxidation/reduction" sub="mainly CYP450" color={amber} />
+      <BlockMarker x={315} y={90} labelDx={12} label={["Often activates a prodrug", "(e.g. codeine → morphine)"]} />
+      <Arrow x1={230} y1={110} x2={230} y2={132} />
+      <Step x={145} y={132} w={170} h={40} label="Phase II: conjugation" sub="glucuronidation, sulfation, acetylation" color={teal} />
+      <BlockMarker x={315} y={152} labelDx={12} label={["Makes the molecule more", "water-soluble for excretion"]} />
+      <Arrow x1={230} y1={172} x2={230} y2={194} />
+      <Step x={105} y={194} w={250} h={40} label="Excreted (renal / biliary)" color={emerald} />
+
+      <text x="230" y="254" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">Some drugs (e.g. lorazepam) skip Phase I entirely — useful in liver</text>
+      <text x="230" y="266" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">disease, since Phase II capacity is often preserved longer than Phase I</text>
+    </svg>
+  );
+}
+
+// 60. Blood-brain barrier drug permeability
+export function BbbPermeabilityDiagram() {
+  return (
+    <svg viewBox="0 0 460 282" className="w-full" role="img" aria-label="Blood-brain barrier drug permeability determined by tight junctions, lipophilicity, and P-glycoprotein efflux" >
+      <ArrowDefs />
+      <Step x={145} y={8} w={170} h={40} label="Brain capillary" sub="tight junctions between endothelial cells" color={violet} />
+      <Arrow x1={230} y1={48} x2={230} y2={70} />
+      <Step x={145} y={70} w={170} h={40} label="Lipophilic, small, un-ionized drugs" sub="cross the BBB easily" color={amber} />
+      <Arrow x1={230} y1={110} x2={230} y2={132} />
+      <Step x={145} y={132} w={170} h={40} label="Polar / ionized / large molecules" sub="blocked by tight junctions" color={teal} />
+      <BlockMarker x={315} y={152} labelDx={12} label={["P-glycoprotein actively pumps", "some lipophilic drugs back out"]} />
+      <Arrow x1={230} y1={172} x2={230} y2={194} />
+      <Step x={105} y={194} w={250} h={40} label="CNS entry depends on all three factors" color={emerald} />
+
+      <text x="230" y="254" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">Inflammation (e.g. meningitis) disrupts the BBB, letting normally-</text>
+      <text x="230" y="266" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">excluded antibiotics like penicillin penetrate far better</text>
+    </svg>
+  );
+}
