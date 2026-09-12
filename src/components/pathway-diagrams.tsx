@@ -165,26 +165,33 @@ export function AutonomicReceptorDiagram() {
   );
 }
 
-// 5. RAAS pathway with drug targets
+// 5. RAAS cascade with ACE inhibitor / ARB / direct renin inhibitor sites
 export function RaasDiagram() {
   return (
-    <svg viewBox="0 0 420 220" className="w-full" role="img" aria-label="Renin-angiotensin-aldosterone pathway with drug targets">
+    <svg viewBox="0 0 460 352" className="w-full" role="img" aria-label="Renin-angiotensin-aldosterone cascade with direct renin inhibitor, ACE inhibitor, and ARB sites of action marked">
       <ArrowDefs />
-      <Step x={20} y={15} w={130} label="Renin" sub="from JG cells" color={teal} />
-      <Arrow x1={150} y1={36} x2={190} y2={36} />
-      <Step x={195} y={15} w={130} label="Angiotensinogen → I" color={teal} />
-      <Arrow x1={260} y1={57} x2={260} y2={85} />
-      <Step x={195} y={90} w={130} label="Angiotensin I" color={amber} />
-      <text x="330" y="80" fontSize="9" fontWeight={700} fill={rose.fg}>ACE inhibitors block here</text>
-      <Arrow x1={260} y1={132} x2={260} y2={160} />
-      <Step x={195} y={165} w={130} label="Angiotensin II" color={rose} />
-      <text x="330" y="155" fontSize="9" fontWeight={700} fill={violet.fg}>ARBs block AT1 receptor</text>
+      <Step x={145} y={8} w={170} h={40} label="Renin release" sub="from JG cells — low renal perfusion" color={teal} />
+      <BlockMarker x={145} y={28} labelDx={-12} label={["Aliskiren blocks", "renin directly"]} />
 
-      <Arrow x1={195} y1={186} x2={50} y2={186} />
-      <Step x={20} y={165} w={130} label="Vasoconstriction" sub="↑ blood pressure" color={rose} />
+      <Arrow x1={230} y1={48} x2={230} y2={70} />
+      <Step x={145} y={70} w={170} h={40} label="Angiotensinogen → Angiotensin I" color={teal} />
 
-      <Arrow x1={325} y1={186} x2={370} y2={186} />
-      <Step x={330} y={165} w={80} h={42} label="Aldosterone" sub="Na+/H2O retention" color={magenta} />
+      <Arrow x1={230} y1={110} x2={230} y2={132} />
+      <Step x={145} y={132} w={170} h={40} label="Angiotensin I → II" sub="via ACE" color={amber} />
+      <BlockMarker x={315} y={152} labelDx={12} label={["ACE inhibitors", "(enalapril, ramipril)"]} />
+
+      <Arrow x1={230} y1={172} x2={230} y2={194} />
+      <Step x={145} y={194} w={170} h={40} label="Angiotensin II binds AT1" color={rose} />
+      <BlockMarker x={315} y={214} labelDx={12} label={["ARBs", "(losartan, telmisartan)"]} />
+
+      <Arrow x1={190} y1={234} x2={110} y2={270} />
+      <Step x={30} y={270} w={160} h={40} label="Vasoconstriction" sub="↑ blood pressure" color={rose} />
+
+      <Arrow x1={270} y1={234} x2={350} y2={270} />
+      <Step x={270} y={270} w={160} h={40} label="Aldosterone release" sub="Na+/H2O retention" color={magenta} />
+
+      <text x="230" y="322" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">Aliskiren, ACE inhibitors, and ARBs act at three different steps of the same cascade</text>
+      <text x="230" y="336" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">Only ACE inhibitors raise bradykinin (dry cough/angioedema) — ARBs act downstream and largely avoid this</text>
     </svg>
   );
 }
