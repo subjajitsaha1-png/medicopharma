@@ -501,6 +501,31 @@ export function IonChannelGatingDiagram() {
   );
 }
 
+// 13b. Local anesthetic use-dependent Na+ channel block (parallel to the antiepileptic diagram above)
+export function LocalAnestheticBlockDiagram() {
+  const states = [
+    { label: "Resting", sub: "closed, ready", color: teal },
+    { label: "Open", sub: "Na+ influx", color: amber },
+    { label: "Inactivated", sub: "refractory", color: rose },
+  ];
+  return (
+    <svg viewBox="0 0 380 214" className="w-full" role="img" aria-label="Local anesthetic use-dependent sodium channel block in a peripheral nerve axon, with differential fiber blockade">
+      <ArrowDefs />
+      {states.map((s, i) => (
+        <Step key={s.label} x={20 + i * 125} y={30} w={100} h={50} label={s.label} sub={s.sub} color={s.color} />
+      ))}
+      <Arrow x1={120} y1={55} x2={145} y2={55} />
+      <Arrow x1={245} y1={55} x2={270} y2={55} />
+      <path d="M 320 55 C 360 55, 360 130, 190 130 C 60 130, 40 100, 70 60" fill="none" stroke="var(--color-muted-foreground)" strokeWidth={1.4} strokeDasharray="3 3" opacity={0.5} markerEnd="url(#arrowhead)" />
+      <text x="190" y="145" textAnchor="middle" fontSize="8.5" fill="var(--color-muted-foreground)">peripheral nerve axon — not a CNS neuron</text>
+      <circle cx={70} cy={55} r={4.5} fill={amber.fg} className="pathway-ligand" style={{ ["--lx0" as string]: "0px", ["--ly0" as string]: "0px", ["--lx1" as string]: "230px", ["--ly1" as string]: "0px" }} />
+      <text x="190" y="168" textAnchor="middle" fontSize="9" fontWeight={700} fill={rose.fg}>Local anesthetics bind OPEN & INACTIVATED states from inside the axon</text>
+      <text x="190" y="182" textAnchor="middle" fontSize="8.5" fill="var(--color-muted-foreground)">— same use-dependent mechanism as antiepileptics, here blocking a nerve axon</text>
+      <text x="190" y="200" textAnchor="middle" fontSize="8.5" fontWeight={700} fill={emerald.fg}>Small, rapidly-firing pain fibers (Aδ, C) block first — large myelinated motor fibers (Aα) block last</text>
+    </svg>
+  );
+}
+
 // 14. Oral absorption and hepatic first-pass metabolism vs IV
 export function FirstPassMetabolismDiagram() {
   return (
