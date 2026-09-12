@@ -1,10 +1,16 @@
 // Original animated diagrams for pharmacology study reference.
 // Hand-built for this app — not sourced or traced from any textbook.
+// Motion (traveling-dash flow along arrows, path-length draw-in for curves,
+// staggered fade/rise entrance for step boxes) uses generic, widely-known
+// SVG/CSS animation techniques common across open-source svg-animation
+// projects (e.g. animated stroke-dashoffset for path "drawing", CSS
+// keyframe entrance animation) — implemented independently here in plain
+// CSS with no added dependency; see the .pathway-* classes in index.css.
 import { violet, teal, amber, rose, emerald, blue, magenta, lime } from "@/lib/palette";
 
 function Step({ x, y, w = 110, h = 42, label, sub, color }: { x: number; y: number; w?: number; h?: number; label: string; sub?: string; color: { bg: string; fg: string } }) {
   return (
-    <g>
+    <g className="pathway-step-enter">
       <rect x={x} y={y} width={w} height={h} rx={10} fill={color.bg} stroke={color.fg} strokeOpacity={0.25} />
       <text x={x + w / 2} y={y + (sub ? 18 : 25)} textAnchor="middle" fontSize="12" fontWeight={700} fill={color.fg}>{label}</text>
       {sub && (
@@ -17,7 +23,7 @@ function Step({ x, y, w = 110, h = 42, label, sub, color }: { x: number; y: numb
 }
 
 function Arrow({ x1, y1, x2, y2 }: { x1: number; y1: number; x2: number; y2: number }) {
-  return <line x1={x1} y1={y1} x2={x2} y2={y2} stroke="var(--color-muted-foreground)" strokeWidth={1.6} markerEnd="url(#arrowhead)" opacity={0.55} />;
+  return <line x1={x1} y1={y1} x2={x2} y2={y2} stroke="var(--color-muted-foreground)" strokeWidth={1.6} markerEnd="url(#arrowhead)" opacity={0.55} className="pathway-arrow-flow" />;
 }
 
 function ArrowDefs() {
@@ -42,7 +48,7 @@ export function DoseResponseDiagram() {
       <line x1="30" y1="170" x2="30" y2="15" stroke="var(--color-muted-foreground)" strokeWidth={1.5} />
       <text x="180" y="186" textAnchor="middle" fontSize="10" fill="var(--color-muted-foreground)">Log [Drug] →</text>
       <text x="10" y="90" textAnchor="middle" fontSize="10" fill="var(--color-muted-foreground)" transform="rotate(-90 10 90)">Effect →</text>
-      <path d={agonist} fill="none" stroke={violet.fg} strokeWidth={2.5} />
+      <path d={agonist} fill="none" stroke={violet.fg} strokeWidth={2.5} pathLength={1} strokeDasharray={1} className="pathway-curve-draw" />
       <path d={competitive} fill="none" stroke={amber.fg} strokeWidth={2.5} strokeDasharray="5 4" />
       <path d={nonCompetitive} fill="none" stroke={rose.fg} strokeWidth={2.5} strokeDasharray="2 3" />
       <text x="205" y="28" fontSize="9" fontWeight={700} fill={violet.fg}>Agonist alone</text>
@@ -67,7 +73,7 @@ export function HalfLifeDiagram() {
       <line x1="30" y1="150" x2="30" y2="15" stroke="var(--color-muted-foreground)" strokeWidth={1.5} />
       <text x="190" y="166" textAnchor="middle" fontSize="10" fill="var(--color-muted-foreground)">Time (each interval = 1 half-life) →</text>
       <text x="10" y="85" textAnchor="middle" fontSize="10" fill="var(--color-muted-foreground)" transform="rotate(-90 10 85)">Plasma concentration →</text>
-      <path d={path} fill="none" stroke={teal.fg} strokeWidth={2.5} />
+      <path d={path} fill="none" stroke={teal.fg} strokeWidth={2.5} pathLength={1} strokeDasharray={1} className="pathway-curve-draw" />
       {points.map((p, i) => (
         <g key={i}>
           <circle cx={p.x} cy={p.y} r={3.5} fill={teal.fg} />
@@ -157,7 +163,7 @@ export function AntiarrhythmicDiagram() {
     <svg viewBox="0 0 400 200" className="w-full" role="img" aria-label="Antiarrhythmic drug classes mapped onto the cardiac action potential">
       <ArrowDefs />
       <line x1="20" y1="150" x2="390" y2="150" stroke="var(--color-muted-foreground)" strokeWidth={1.5} />
-      <path d={curve} fill="none" stroke={blue.fg} strokeWidth={2.5} />
+      <path d={curve} fill="none" stroke={blue.fg} strokeWidth={2.5} pathLength={1} strokeDasharray={1} className="pathway-curve-draw" />
       <text x="55" y="15" fontSize="9" fontWeight={700} fill={violet.fg}>Phase 0</text>
       <text x="30" y="27" fontSize="8" fill="var(--color-muted-foreground)">Class I: ↓ Na+ influx</text>
       <text x="150" y="45" fontSize="9" fontWeight={700} fill={amber.fg}>Phase 2 (plateau)</text>
