@@ -1,11 +1,12 @@
 import { useEffect, useMemo, useState, type ReactNode } from "react";
-import { BookOpen, ArrowLeft, ClipboardList, Download, ExternalLink, FlaskConical, Layers3, Moon, Pill, Search, Star, Sun, Upload, Waypoints } from "lucide-react";
+import { BookOpen, ArrowLeft, ClipboardList, Download, ExternalLink, FlaskConical, GraduationCap, Layers3, Moon, Pill, Search, Star, Sun, Upload, Waypoints } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { FACTS, TOPICS, type FactItem } from "@/data/facts";
 import { MCQS, type McqItem } from "@/data/mcqs";
 import { DRUG_REFERENCE } from "@/data/drug-reference";
 import { TOPIC_OVERVIEWS } from "@/data/topic-overviews";
 import { TopicOverviewSection } from "@/components/topic-overview";
+import { PracticalViva } from "@/components/practical-viva";
 import { TOPIC_PALETTE } from "@/lib/palette";
 import {
   exportProgress,
@@ -33,7 +34,7 @@ import {
   CellCycleDiagram,
 } from "@/components/pathway-diagrams";
 
-type Tab = "sheets" | "flashcards" | "diagrams" | "reference";
+type Tab = "sheets" | "flashcards" | "diagrams" | "reference" | "practical";
 const THEME_KEY = "pharmacology-theme";
 
 function topicColor(topicId: string) {
@@ -555,6 +556,7 @@ function LandingPage({ onEnter, dark, onToggleDark }: { onEnter: (tab: Tab) => v
     { tab: "flashcards", title: "Flashcards + MCQs", description: "Spaced-repetition review and NEET PG-style MCQ practice, with progress export/import.", icon: <Layers3 size={22} />, color: TOPIC_PALETTE[2]! },
     { tab: "diagrams", title: "Mechanism Diagrams", description: "Animated pharmacology diagrams you can tap to enlarge, grouped by system.", icon: <Waypoints size={22} />, color: TOPIC_PALETTE[4]! },
     { tab: "reference", title: "Drug Quick Reference", description: "Searchable reference of drug classes, mechanisms, and key exam points.", icon: <FlaskConical size={22} />, color: TOPIC_PALETTE[6]! },
+    { tab: "practical", title: "Practical & Viva", description: "Prescription-writing cases, CAL experiments, spotters, and viva-voce questions by unit.", icon: <GraduationCap size={22} />, color: TOPIC_PALETTE[8]! },
   ];
   return (
     <div className="flex min-h-screen flex-col bg-background">
@@ -621,11 +623,12 @@ export default function App() {
             </div>
           </div>
           <div className="flex items-center gap-2">
-            <nav aria-label="Study modes" className="grid grid-cols-4 rounded-xl bg-muted p-1">
+            <nav aria-label="Study modes" className="grid grid-cols-5 rounded-xl bg-muted p-1">
               <TabButton active={tab === "sheets"} onClick={() => setTab("sheets")} icon={<BookOpen size={16} />} label="Fact Sheets" />
               <TabButton active={tab === "flashcards"} onClick={() => setTab("flashcards")} icon={<Layers3 size={16} />} label="Flashcards" />
               <TabButton active={tab === "diagrams"} onClick={() => setTab("diagrams")} icon={<Waypoints size={16} />} label="Diagrams" />
               <TabButton active={tab === "reference"} onClick={() => setTab("reference")} icon={<FlaskConical size={16} />} label="Drug Reference" />
+              <TabButton active={tab === "practical"} onClick={() => setTab("practical")} icon={<GraduationCap size={16} />} label="Practical & Viva" />
             </nav>
             <ThemeToggle dark={dark} onToggle={toggle} />
           </div>
@@ -636,6 +639,7 @@ export default function App() {
         {tab === "flashcards" && <Flashcards />}
         {tab === "diagrams" && <Diagrams />}
         {tab === "reference" && <DrugReference />}
+        {tab === "practical" && <PracticalViva />}
       </main>
       <footer className="border-t border-border px-4 py-6 text-center text-xs leading-relaxed text-muted-foreground">
         High-yield facts are original summaries for exam revision. Always cross-check your course material and current prescribing references.
