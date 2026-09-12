@@ -26,6 +26,23 @@ function Arrow({ x1, y1, x2, y2 }: { x1: number; y1: number; x2: number; y2: num
   return <line x1={x1} y1={y1} x2={x2} y2={y2} stroke="var(--color-muted-foreground)" strokeWidth={1.6} markerEnd="url(#arrowhead)" opacity={0.55} className="pathway-arrow-flow" />;
 }
 
+/** A small red "blocked here" no-entry marker for labeling a drug's exact
+    site of action on a pathway. label may be one string or several lines. */
+function BlockMarker({ x, y, label, labelDx = 12, color = rose }: { x: number; y: number; label: string | string[]; labelDx?: number; color?: { fg: string } }) {
+  const lines = Array.isArray(label) ? label : [label];
+  return (
+    <g>
+      <circle cx={x} cy={y} r={7} fill="var(--color-card)" stroke={color.fg} strokeWidth={2} />
+      <line x1={x - 4.2} y1={y - 4.2} x2={x + 4.2} y2={y + 4.2} stroke={color.fg} strokeWidth={2} />
+      <text x={x + labelDx} y={y - 4 + (lines.length > 1 ? 0 : 3)} fontSize="7.5" fontWeight={700} fill={color.fg} textAnchor={labelDx < 0 ? "end" : "start"}>
+        {lines.map((line, i) => (
+          <tspan key={i} x={x + labelDx} dy={i === 0 ? 0 : 9}>{line}</tspan>
+        ))}
+      </text>
+    </g>
+  );
+}
+
 function ArrowDefs() {
   return (
     <defs>
@@ -177,22 +194,34 @@ export function AntiarrhythmicDiagram() {
 }
 
 // 7. Coagulation cascade & anticoagulant sites
+// 6. Coagulation cascade: intrinsic/extrinsic → common pathway, with anticoagulant sites
 export function CoagulationDiagram() {
   return (
-    <svg viewBox="0 0 420 230" className="w-full" role="img" aria-label="Coagulation cascade with anticoagulant drug sites">
+    <svg viewBox="0 0 460 320" className="w-full" role="img" aria-label="Coagulation cascade from intrinsic and extrinsic pathways through the common pathway, with heparin, warfarin, and DOAC sites of action marked">
       <ArrowDefs />
-      <Step x={20} y={15} w={160} label="Intrinsic pathway" sub="XII → XI → IX" color={teal} />
-      <Step x={230} y={15} w={160} label="Extrinsic pathway" sub="Tissue factor → VII" color={amber} />
-      <text x="20" y="55" fontSize="8.5" fill="var(--color-muted-foreground)">Heparin ↑ antithrombin III → inhibits IIa & Xa</text>
-      <Arrow x1={100} y1={57} x2={165} y2={90} />
-      <Arrow x1={310} y1={57} x2={245} y2={90} />
-      <Step x={155} y={95} w={110} label="Factor X → Xa" sub="common pathway" color={rose} />
-      <Arrow x1={210} y1={137} x2={210} y2={165} />
-      <Step x={155} y={170} w={110} label="Prothrombin (II) → Thrombin (IIa)" color={rose} />
-      <text x="30" y="185" fontSize="8.5" fill="var(--color-muted-foreground)">Warfarin blocks synthesis of II, VII, IX, X (vitamin K–dependent)</text>
-      <Arrow x1={155} y1={191} x2={20} y2={191} />
-      <Step x={280} y={95} w={130} label="Fibrinogen → Fibrin" sub="stable clot" color={violet} />
-      <Arrow x1={265} y1={116} x2={280} y2={116} />
+      <Step x={145} y={8} w={170} h={40} label="Liver" sub="vitamin K–dependent synthesis: II, VII, IX, X" color={blue} />
+      <BlockMarker x={145} y={28} labelDx={-12} label={["Warfarin blocks", "hepatic synthesis"]} />
+
+      <Arrow x1={200} y1={48} x2={115} y2={64} />
+      <Arrow x1={260} y1={48} x2={345} y2={64} />
+      <Step x={10} y={66} w={170} h={42} label="Intrinsic pathway" sub="XII → XI → IX → VIIIa" color={teal} />
+      <Step x={280} y={66} w={170} h={42} label="Extrinsic pathway" sub="Tissue factor + VIIa" color={amber} />
+
+      <Arrow x1={95} y1={108} x2={190} y2={140} />
+      <Arrow x1={365} y1={108} x2={270} y2={140} />
+      <Step x={145} y={140} w={170} h={42} label="Factor X → Xa" sub="common pathway begins" color={rose} />
+      <BlockMarker x={315} y={161} labelDx={12} label={["Heparin/LMWH", "(via antithrombin)"]} />
+      <BlockMarker x={145} y={161} labelDx={-12} label={["DOAC: rivaroxaban,", "apixaban (direct)"]} />
+
+      <Arrow x1={230} y1={182} x2={230} y2={206} />
+      <Step x={145} y={206} w={170} h={42} label="Prothrombin (II) → Thrombin (IIa)" color={rose} />
+      <BlockMarker x={315} y={227} labelDx={12} label={["Heparin/LMWH", "(via antithrombin)"]} />
+      <BlockMarker x={145} y={227} labelDx={-12} label={["DOAC: dabigatran", "(direct thrombin)"]} />
+
+      <Arrow x1={230} y1={248} x2={230} y2={272} />
+      <Step x={145} y={272} w={170} h={36} label="Fibrinogen → Fibrin" sub="stable clot" color={violet} />
+
+      <text x="230" y="314" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">Heparin works indirectly via antithrombin III (needs monitoring); DOACs act directly on one factor; warfarin blocks synthesis of four factors upstream</text>
     </svg>
   );
 }
