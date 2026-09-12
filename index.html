@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0F766E" />
+    <title>Pharmacology High-Yield | Exam Revision</title>
+    <meta name="description" content="High-yield medical pharmacology revision: drug fact sheets, spaced-repetition flashcards, animated mechanism diagrams, NEET PG-style MCQ practice, and a drug quick-reference for Indian MBBS students." />
+    <meta property="og:title" content="Pharmacology High-Yield" />
+    <meta property="og:description" content="Fact sheets, flashcards, animated mechanism diagrams, MCQ practice, and a drug quick-reference for pharmacology revision." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <script>
+      // Apply saved theme before paint to avoid a flash of the wrong theme.
+      try {
+        var t = localStorage.getItem("pharmacology-theme");
+        if (t === "dark" || (!t && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+          document.documentElement.classList.add("dark");
+        }
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
