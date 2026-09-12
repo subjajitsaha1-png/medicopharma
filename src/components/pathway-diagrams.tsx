@@ -455,3 +455,159 @@ export function ReceptorBindingDiagram() {
   );
 }
 
+// 18. GABA-A receptor: benzodiazepine vs barbiturate site
+export function GabaReceptorDiagram() {
+  return (
+    <svg viewBox="0 0 360 200" className="w-full" role="img" aria-label="GABA-A receptor chloride channel with benzodiazepine and barbiturate binding sites">
+      <ArrowDefs />
+      <rect x={130} y={30} width={100} height={110} rx={16} fill={teal.bg} stroke={teal.fg} strokeOpacity={0.35} strokeWidth={2} />
+      <text x={180} y={22} textAnchor="middle" fontSize="9" fontWeight={700} fill={teal.fg}>GABA-A receptor (Cl- channel)</text>
+      <circle cx={180} cy={85} r={16} fill="none" stroke={teal.fg} strokeOpacity={0.5} strokeWidth={1.5} strokeDasharray="3 3" />
+      <text x={180} y={89} textAnchor="middle" fontSize="8" fill={teal.fg}>Cl-</text>
+      <circle cx={180} cy={40} r={5} fill={emerald.fg} className="pathway-ligand" style={{ ["--lx0" as string]: "0px", ["--ly0" as string]: "0px", ["--lx1" as string]: "0px", ["--ly1" as string]: "35px" }} />
+      <text x={180} y={30} textAnchor="middle" fontSize="7.5" fill={emerald.fg}>GABA</text>
+      <Arrow x1={70} y1={60} x2={128} y2={60} />
+      <Step x={10} y={38} w={95} h={44} label="Benzodiazepine" sub="↑ frequency of opening" color={amber} />
+      <Arrow x1={70} y1={140} x2={128} y2={110} />
+      <Step x={10} y={118} w={95} h={44} label="Barbiturate" sub="↑ duration; GABA-independent at high dose" color={rose} />
+      <text x="250" y="45" fontSize="8" fill="var(--color-muted-foreground)">Needs GABA present</text>
+      <text x="250" y="57" fontSize="8" fill="var(--color-muted-foreground)">→ ceiling effect, safer</text>
+      <text x="250" y="120" fontSize="8" fill="var(--color-muted-foreground)">Can open channel alone</text>
+      <text x="250" y="132" fontSize="8" fill="var(--color-muted-foreground)">at high dose → no ceiling,</text>
+      <text x="250" y="144" fontSize="8" fill="var(--color-muted-foreground)">dangerous in overdose</text>
+      <text x="180" y="175" textAnchor="middle" fontSize="8.5" fontWeight={700} fill={rose.fg}>Flumazenil blocks the benzodiazepine site only</text>
+    </svg>
+  );
+}
+
+// 19. Diuretic sites of action along the nephron
+export function NephronDiureticDiagram() {
+  return (
+    <svg viewBox="0 0 380 210" className="w-full" role="img" aria-label="Diuretic drug classes mapped onto their nephron sites of action">
+      <ArrowDefs />
+      <path d="M 40 20 C 40 20, 20 55, 40 80 L 120 80 C 160 80, 160 40, 190 40 C 230 40, 230 100, 270 100 L 310 100 C 330 100, 330 140, 300 150 L 200 150 C 170 150, 170 180, 140 180" fill="none" stroke="var(--color-muted-foreground)" strokeWidth={2.2} opacity={0.55} />
+      <circle cx={40} cy={20} r={9} fill="none" stroke="var(--color-muted-foreground)" strokeWidth={1.8} opacity={0.6} />
+      <text x={40} y={12} textAnchor="middle" fontSize="7" fill="var(--color-muted-foreground)">Glomerulus</text>
+      <text x={70} y={72} fontSize="7.5" fill="var(--color-muted-foreground)">Proximal tubule</text>
+      <text x={195} y="30" textAnchor="middle" fontSize="7.5" fill="var(--color-muted-foreground)">Loop of Henle</text>
+      <text x={280} y="95" fontSize="7.5" fill="var(--color-muted-foreground)">Distal tubule</text>
+      <text x={155} y="195" fontSize="7.5" fill="var(--color-muted-foreground)">Collecting duct</text>
+
+      <Step x={50} y={95} w={90} h={38} label="Acetazolamide" sub="carbonic anhydrase" color={violet} />
+      <Arrow x1={95} y1={95} x2={70} y2={80} />
+
+      <Step x={230} y={10} w={100} h={38} label="Loop diuretics" sub="Na-K-2Cl symporter" color={rose} />
+      <Arrow x1={260} y1={48} x2={230} y2={45} />
+
+      <Step x={230} y={110} w={100} h={38} label="Thiazides" sub="Na-Cl symporter (DCT)" color={amber} />
+      <Arrow x1={280} y1={110} x2={280} y2={100} />
+
+      <Step x={40} y={150} w={95} h={44} label="K+-sparing" sub="ENaC / aldosterone antagonist" color={emerald} />
+      <Arrow x1={135} y1={170} x2={155} y2={175} />
+
+      <text x="190" y="205" textAnchor="middle" fontSize="8" fontWeight={700} fill="var(--color-muted-foreground)">Loop diuretics act earliest and are most potent; thiazides and K+-sparing agents act further downstream</text>
+    </svg>
+  );
+}
+
+// 20. Arachidonic acid cascade and NSAID / corticosteroid targets
+export function ArachidonicAcidDiagram() {
+  return (
+    <svg viewBox="0 0 380 210" className="w-full" role="img" aria-label="Arachidonic acid cascade showing NSAID and corticosteroid drug targets">
+      <ArrowDefs />
+      <Step x={140} y={10} w={110} h={38} label="Membrane phospholipids" color={teal} />
+      <Arrow x1={195} y1={48} x2={195} y2={72} />
+      <Step x={140} y={74} w={110} h={38} label="Arachidonic acid" color={teal} />
+      <Step x={10} y={10} w={110} h={36} label="Corticosteroids" sub="inhibit phospholipase A2" color={rose} />
+      <Arrow x1={65} y1={46} x2={140} y2={45} />
+
+      <Arrow x1={195} y1={112} x2={100} y2={140} />
+      <Arrow x1={195} y1={112} x2={290} y2={140} />
+      <Step x={20} y={142} w={130} h={42} label="COX pathway" sub="prostaglandins, thromboxane" color={amber} />
+      <Step x={230} y={142} w={140} h={42} label="LOX pathway" sub="leukotrienes" color={violet} />
+
+      <text x={85} y={200} textAnchor="middle" fontSize="8" fontWeight={700} fill={amber.fg}>NSAIDs / coxibs block COX here</text>
+      <circle cx={20} cy={163} r={4.5} fill={amber.fg} className="pathway-ligand" style={{ ["--lx0" as string]: "0px", ["--ly0" as string]: "0px", ["--lx1" as string]: "125px", ["--ly1" as string]: "0px" }} />
+      <text x={300} y={200} textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">Leukotrienes drive bronchospasm — montelukast blocks their receptor</text>
+    </svg>
+  );
+}
+
+// 21. Gastric acid secretion and antiulcer drug targets
+export function GastricAcidDiagram() {
+  return (
+    <svg viewBox="0 0 380 210" className="w-full" role="img" aria-label="Gastric parietal cell acid secretion pathway with antiulcer drug targets">
+      <ArrowDefs />
+      <Step x={10} y={14} w={95} h={38} label="Acetylcholine" sub="vagal (M3)" color={teal} />
+      <Step x={10} y={62} w={95} h={38} label="Gastrin" sub="(CCK-B)" color={amber} />
+      <Step x={10} y={110} w={95} h={38} label="Histamine" sub="(H2)" color={rose} />
+      <Arrow x1={105} y1={33} x2={150} y2={70} />
+      <Arrow x1={105} y1={81} x2={150} y2={80} />
+      <Arrow x1={105} y1={129} x2={150} y2={90} />
+      <Step x={150} y={62} w={110} h={44} label="Parietal cell" sub="H+/K+-ATPase (proton pump)" color={violet} />
+      <Arrow x1={260} y1={84} x2={300} y2={84} />
+      <Step x={300} y={62} w={70} h={44} label="H+ into lumen" sub="gastric acid" color={violet} />
+      <circle cx={195} cy={84} r={5} fill={violet.fg} className="pathway-ligand" style={{ ["--lx0" as string]: "0px", ["--ly0" as string]: "0px", ["--lx1" as string]: "90px", ["--ly1" as string]: "0px" }} />
+      <text x="10" y="175" fontSize="8.5" fontWeight={700} fill={violet.fg}>PPIs (omeprazole) irreversibly block the pump itself —</text>
+      <text x="10" y="187" fontSize="8.5" fill="var(--color-muted-foreground)">deeper, longer-lasting suppression than blocking any single input.</text>
+      <text x="10" y="200" fontSize="8.5" fill="var(--color-muted-foreground)">H2 blockers (famotidine) only block the histamine input.</text>
+    </svg>
+  );
+}
+
+// 22. HIV replication cycle and antiretroviral drug classes
+export function HivReplicationDiagram() {
+  const steps = [
+    { label: "Entry / fusion", sub: "CD4 + co-receptor", color: teal },
+    { label: "Reverse transcription", sub: "RNA → DNA", color: amber },
+    { label: "Integration", sub: "viral DNA → host genome", color: rose },
+    { label: "Transcription / translation", sub: "viral proteins made", color: violet },
+    { label: "Assembly & maturation", sub: "protease cleaves precursors", color: emerald },
+  ];
+  return (
+    <svg viewBox="0 0 380 230" className="w-full" role="img" aria-label="HIV replication cycle with antiretroviral drug class targets">
+      <ArrowDefs />
+      {steps.map((s, i) => (
+        <g key={s.label}>
+          <Step x={10} y={10 + i * 40} w={220} h={32} label={s.label} sub={s.sub} color={s.color} />
+          {i < steps.length - 1 && <Arrow x1={120} y1={42 + i * 40} x2={120} y2={50 + i * 40} />}
+        </g>
+      ))}
+      <text x="245" y="26" fontSize="8" fontWeight={700} fill={teal.fg}>Entry/fusion inhibitors</text>
+      <text x="245" y="38" fontSize="7.5" fill="var(--color-muted-foreground)">maraviroc, enfuvirtide</text>
+      <text x="245" y="66" fontSize="8" fontWeight={700} fill={amber.fg}>NRTIs / NNRTIs</text>
+      <text x="245" y="78" fontSize="7.5" fill="var(--color-muted-foreground)">tenofovir, efavirenz</text>
+      <text x="245" y="106" fontSize="8" fontWeight={700} fill={rose.fg}>Integrase inhibitors</text>
+      <text x="245" y="118" fontSize="7.5" fill="var(--color-muted-foreground)">dolutegravir, raltegravir</text>
+      <text x="245" y="186" fontSize="8" fontWeight={700} fill={emerald.fg}>Protease inhibitors</text>
+      <text x="245" y="198" fontSize="7.5" fill="var(--color-muted-foreground)">lopinavir/ritonavir, atazanavir</text>
+      <text x="120" y="222" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">Combination ART targets multiple steps at once to minimize resistance</text>
+    </svg>
+  );
+}
+
+// 23. GPCR second-messenger signaling (Gq, Gs, Gi)
+export function GpcrSignalingDiagram() {
+  const branches = [
+    { label: "Gq", sub: "↑ IP3/DAG → ↑ Ca2+", effect: "smooth muscle contraction (α1, M3)", color: rose, y: 20 },
+    { label: "Gs", sub: "↑ adenylyl cyclase → ↑ cAMP", effect: "↑ heart rate/contractility (β1); relaxation (β2)", color: teal, y: 80 },
+    { label: "Gi", sub: "↓ adenylyl cyclase → ↓ cAMP", effect: "presynaptic inhibition (α2, M2)", color: amber, y: 140 },
+  ];
+  return (
+    <svg viewBox="0 0 380 200" className="w-full" role="img" aria-label="G-protein coupled receptor signaling through Gq, Gs, and Gi pathways">
+      <ArrowDefs />
+      <Step x={10} y={80} w={90} h={40} label="Agonist binds" sub="GPCR" color={violet} />
+      {branches.map((b) => (
+        <g key={b.label}>
+          <Arrow x1={100} y1={100} x2={140} y2={b.y + 20} />
+          <Step x={140} y={b.y} w={90} h={40} label={b.label} sub={b.sub} color={b.color} />
+          <Arrow x1={230} y1={b.y + 20} x2={260} y2={b.y + 20} />
+          <text x={265} y={b.y + 12} fontSize="7.5" fill="var(--color-muted-foreground)">{b.effect.split("; ")[0]}</text>
+          {b.effect.includes(";") && <text x={265} y={b.y + 24} fontSize="7.5" fill="var(--color-muted-foreground)">{b.effect.split("; ")[1]}</text>}
+        </g>
+      ))}
+      <text x="190" y="190" textAnchor="middle" fontSize="8.5" fontWeight={700} fill="var(--color-muted-foreground)">Same receptor family, three different G-proteins — knowing the G-protein predicts the effect</text>
+    </svg>
+  );
+}
+
