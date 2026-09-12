@@ -216,7 +216,6 @@ export function AntiarrhythmicDiagram() {
   );
 }
 
-// 7. Coagulation cascade & anticoagulant sites
 // 6. Coagulation cascade: intrinsic/extrinsic → common pathway, with anticoagulant sites
 export function CoagulationDiagram() {
   return (
@@ -797,3 +796,207 @@ export function GpcrSignalingDiagram() {
   );
 }
 
+// 24. Parkinson's disease: nigrostriatal dopamine deficit and drug targets
+export function ParkinsonDiagram() {
+  return (
+    <svg viewBox="0 0 460 344" className="w-full" role="img" aria-label="Parkinson's disease nigrostriatal dopamine pathway with levodopa, dopamine agonist, and MAO-B inhibitor sites of action">
+      <ArrowDefs />
+      <Step x={145} y={8} w={170} h={40} label="Substantia nigra" sub="dopaminergic neurons degenerate in PD" color={violet} />
+      <Arrow x1={230} y1={48} x2={230} y2={70} />
+      <Step x={145} y={70} w={170} h={40} label="Dopamine synthesis ↓" sub="tyrosine → L-dopa → dopamine" color={amber} />
+      <BlockMarker x={145} y={90} labelDx={-12} label={["Levodopa + carbidopa", "replace dopamine (precursor)"]} />
+      <Arrow x1={230} y1={110} x2={230} y2={132} />
+      <Step x={145} y={132} w={170} h={40} label="Dopamine released in striatum" sub="binds D2 receptors" color={teal} />
+      <BlockMarker x={315} y={152} labelDx={12} label={["Dopamine agonists", "(pramipexole, ropinirole)", "directly stimulate D2"]} />
+      <Arrow x1={230} y1={172} x2={230} y2={194} />
+      <Step x={145} y={194} w={170} h={40} label="Dopamine broken down" sub="by MAO-B" color={rose} />
+      <BlockMarker x={145} y={214} labelDx={-12} label={["MAO-B inhibitors", "(selegiline) block breakdown"]} />
+      <Arrow x1={230} y1={234} x2={230} y2={256} />
+      <Step x={105} y={256} w={250} h={40} label="Restored striatal dopamine tone" sub="↓ bradykinesia, rigidity, tremor" color={emerald} />
+
+      <text x="230" y="316" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">Carbidopa prevents peripheral conversion of levodopa to dopamine</text>
+      <text x="230" y="328" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">— reducing nausea and allowing more levodopa to reach the brain</text>
+    </svg>
+  );
+}
+
+// 25. Migraine pharmacology: trigeminovascular activation and triptan mechanism
+export function MigraineDiagram() {
+  return (
+    <svg viewBox="0 0 460 282" className="w-full" role="img" aria-label="Trigeminovascular migraine mechanism with triptan sites of action">
+      <ArrowDefs />
+      <Step x={145} y={8} w={170} h={40} label="Trigeminal nerve activation" sub="trigeminovascular system" color={violet} />
+      <Arrow x1={230} y1={48} x2={230} y2={70} />
+      <Step x={145} y={70} w={170} h={40} label="CGRP + serotonin release" sub="meningeal vasodilation" color={amber} />
+      <BlockMarker x={315} y={90} labelDx={12} label={["Triptans (5-HT1B/1D agonists)", "cause vasoconstriction &", "↓ CGRP release"]} />
+      <Arrow x1={230} y1={110} x2={230} y2={132} />
+      <Step x={145} y={132} w={170} h={40} label="Pain via trigeminal nucleus" sub="neurogenic inflammation" color={rose} />
+      <BlockMarker x={145} y={152} labelDx={-12} label={["Triptans also block pain", "transmission centrally"]} />
+      <Arrow x1={230} y1={172} x2={230} y2={194} />
+      <Step x={105} y={194} w={250} h={40} label="Migraine headache" sub="throbbing, unilateral, photophobia" color={emerald} />
+
+      <text x="230" y="254" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">Triptans are contraindicated in coronary artery disease — the same</text>
+      <text x="230" y="266" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">vasoconstriction relieving migraine can worsen cardiac ischemia</text>
+    </svg>
+  );
+}
+
+// 26. Alcohol metabolism and disulfiram's ALDH block
+export function AlcoholMetabolismDiagram() {
+  return (
+    <svg viewBox="0 0 460 222" className="w-full" role="img" aria-label="Alcohol metabolism pathway with disulfiram blocking aldehyde dehydrogenase">
+      <ArrowDefs />
+      <Step x={145} y={8} w={170} h={40} label="Ethanol" color={teal} />
+      <text x="245" y="60" fontSize="7.5" fontWeight={700} fill="var(--color-muted-foreground)">ADH</text>
+      <Arrow x1={230} y1={48} x2={230} y2={70} />
+      <Step x={145} y={70} w={170} h={40} label="Acetaldehyde" sub="toxic intermediate" color={amber} />
+      <BlockMarker x={315} y={90} labelDx={12} label={["Disulfiram blocks ALDH here", "→ acetaldehyde accumulates", "→ flushing, tachycardia, nausea"]} />
+      <text x="245" y="122" fontSize="7.5" fontWeight={700} fill="var(--color-muted-foreground)">ALDH</text>
+      <Arrow x1={230} y1={110} x2={230} y2={132} />
+      <Step x={145} y={132} w={170} h={40} label="Acetate" sub="harmless, further metabolized" color={emerald} />
+
+      <text x="230" y="192" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">This is the basis of disulfiram aversive therapy for alcohol dependence</text>
+      <text x="230" y="204" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">— drinking while on it causes an immediate, unpleasant reaction</text>
+    </svg>
+  );
+}
+
+// 27. Organophosphate poisoning and antidote mechanism
+export function OrganophosphateDiagram() {
+  return (
+    <svg viewBox="0 0 460 282" className="w-full" role="img" aria-label="Organophosphate poisoning mechanism with atropine and pralidoxime antidote sites of action">
+      <ArrowDefs />
+      <Step x={145} y={8} w={170} h={40} label="Organophosphate exposure" sub="pesticide, nerve agent" color={violet} />
+      <Arrow x1={230} y1={48} x2={230} y2={70} />
+      <Step x={145} y={70} w={170} h={40} label="Acetylcholinesterase inhibited" sub="irreversibly (until 'aging')" color={amber} />
+      <BlockMarker x={315} y={90} labelDx={12} label={["Pralidoxime (2-PAM) reactivates", "AChE — must be given before", "the enzyme-OP bond 'ages'"]} />
+      <Arrow x1={230} y1={110} x2={230} y2={132} />
+      <Step x={145} y={132} w={170} h={40} label="ACh accumulates" sub="muscarinic + nicotinic overactivity" color={rose} />
+      <Arrow x1={230} y1={172} x2={230} y2={194} />
+      <Step x={105} y={194} w={250} h={40} label="Salivation, miosis, bradycardia" sub="+ fasciculations, weakness, resp. failure" color={emerald} />
+      <BlockMarker x={105} y={214} labelDx={-12} label={["Atropine blocks only the", "muscarinic effects"]} />
+
+      <text x="230" y="254" textAnchor="middle" fontSize="8" fontWeight={700} fill="var(--color-muted-foreground)">Atropine alone does not fix the nicotinic (motor) weakness</text>
+      <text x="230" y="266" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">— pralidoxime is essential for that, and both are given together</text>
+    </svg>
+  );
+}
+
+// 28. Opioid overdose reversal by naloxone
+export function NaloxoneReversalDiagram() {
+  return (
+    <svg viewBox="0 0 460 222" className="w-full" role="img" aria-label="Naloxone competitive displacement of opioid at the mu receptor in overdose reversal">
+      <ArrowDefs />
+      <Step x={145} y={8} w={170} h={40} label="Opioid overdose" sub="excess mu-receptor activation" color={rose} />
+      <Arrow x1={230} y1={48} x2={230} y2={70} />
+      <Step x={145} y={70} w={170} h={40} label="Naloxone administered" sub="high-affinity competitive antagonist" color={teal} />
+      <BlockMarker x={315} y={90} labelDx={12} label={["Displaces opioid from the", "mu-receptor by competition"]} />
+      <Arrow x1={230} y1={110} x2={230} y2={132} />
+      <Step x={105} y={132} w={250} h={40} label="Receptor blocked, effect reversed" sub="breathing restored" color={emerald} />
+
+      <text x="230" y="192" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">Naloxone's short half-life means re-sedation is possible after reversing</text>
+      <text x="230" y="204" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">a longer-acting opioid — repeat dosing or an infusion may be needed</text>
+    </svg>
+  );
+}
+
+// 29. Vitamin K cycle and warfarin mechanism
+export function VitaminKCycleDiagram() {
+  return (
+    <svg viewBox="0 0 460 282" className="w-full" role="img" aria-label="Vitamin K cycle with warfarin blocking vitamin K epoxide reductase">
+      <ArrowDefs />
+      <Step x={145} y={8} w={170} h={40} label="Vitamin K (reduced form)" color={teal} />
+      <Arrow x1={230} y1={48} x2={230} y2={70} />
+      <Step x={145} y={70} w={170} h={40} label="Carboxylates factors II, VII, IX, X" sub="via vitamin K-dependent carboxylase" color={amber} />
+      <Arrow x1={230} y1={110} x2={230} y2={132} />
+      <Step x={145} y={132} w={170} h={40} label="Vitamin K epoxide" sub="oxidized byproduct" color={violet} />
+      <BlockMarker x={315} y={152} labelDx={12} label={["Warfarin blocks vitamin K", "epoxide reductase (VKORC1)", "— stops K regeneration"]} />
+      <Arrow x1={230} y1={172} x2={230} y2={194} />
+      <Step x={105} y={194} w={250} h={40} label="Clotting factor synthesis falls" sub="without regenerated vitamin K" color={rose} />
+
+      <text x="230" y="254" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">Effect is delayed 2-3 days until existing factors degrade —</text>
+      <text x="230" y="266" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">reversed with vitamin K or fresh frozen plasma/PCC in emergencies</text>
+    </svg>
+  );
+}
+
+// 30. Histamine H1-mediated allergic response and antihistamine site of action
+export function HistamineAllergyDiagram() {
+  return (
+    <svg viewBox="0 0 460 282" className="w-full" role="img" aria-label="Histamine H1-mediated allergic response with antihistamine site of action">
+      <ArrowDefs />
+      <Step x={145} y={8} w={170} h={40} label="Allergen exposure" sub="IgE-mediated mast cell degranulation" color={violet} />
+      <Arrow x1={230} y1={48} x2={230} y2={70} />
+      <Step x={145} y={70} w={170} h={40} label="Histamine released" sub="binds H1 receptors" color={amber} />
+      <BlockMarker x={315} y={90} labelDx={12} label={["Antihistamines (cetirizine,", "diphenhydramine) block H1"]} />
+      <Arrow x1={230} y1={110} x2={230} y2={132} />
+      <Step x={145} y={132} w={170} h={40} label="H1 activation" sub="vasodilation, ↑permeability, itching" color={rose} />
+      <Arrow x1={230} y1={172} x2={230} y2={194} />
+      <Step x={105} y={194} w={250} h={40} label="Urticaria, rhinitis, itching" sub="allergic symptoms" color={emerald} />
+
+      <text x="230" y="254" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">First-generation antihistamines (diphenhydramine) cross the</text>
+      <text x="230" y="266" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">blood-brain barrier and sedate; second-generation agents largely don't</text>
+    </svg>
+  );
+}
+
+// 31. Serotonin syndrome mechanism from combined serotonergic drugs
+export function SerotoninSyndromeDiagram() {
+  return (
+    <svg viewBox="0 0 460 282" className="w-full" role="img" aria-label="Serotonin syndrome mechanism from combined serotonergic drug use">
+      <ArrowDefs />
+      <Step x={145} y={8} w={170} h={40} label="Serotonergic drug combo" sub="e.g. SSRI + MAOI or + tramadol" color={violet} />
+      <Arrow x1={230} y1={48} x2={230} y2={70} />
+      <Step x={145} y={70} w={170} h={40} label="Excess synaptic 5-HT" sub="↓ reuptake AND ↓ breakdown at once" color={amber} />
+      <BlockMarker x={315} y={90} labelDx={12} label={["SSRI blocks reuptake;", "MAOI blocks breakdown —", "together they compound"]} />
+      <Arrow x1={230} y1={110} x2={230} y2={132} />
+      <Step x={145} y={132} w={170} h={40} label="5-HT1A/2A overactivation" color={rose} />
+      <Arrow x1={230} y1={172} x2={230} y2={194} />
+      <Step x={105} y={194} w={250} h={40} label="Serotonin syndrome" sub="hyperthermia, clonus, agitation" color={emerald} />
+
+      <text x="230" y="254" textAnchor="middle" fontSize="8" fontWeight={700} fill="var(--color-muted-foreground)">Clonus/hyperreflexia (too much serotonin) distinguishes this from</text>
+      <text x="230" y="266" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">neuroleptic malignant syndrome, which features rigidity instead</text>
+    </svg>
+  );
+}
+
+// 32. Uterine smooth muscle: oxytocin vs tocolytics
+export function UterineMuscleDiagram() {
+  return (
+    <svg viewBox="0 0 460 150" className="w-full" role="img" aria-label="Uterine smooth muscle pharmacology comparing oxytocin activation with tocolytic relaxation">
+      <ArrowDefs />
+      <Step x={145} y={8} w={170} h={40} label="Uterine smooth muscle" sub="myometrium" color={violet} />
+      <BlockMarker x={145} y={28} labelDx={-12} label={["Oxytocin → ↑ intracellular Ca2+", "→ contraction (induction/", "augmentation, PPH prevention)"]} />
+      <BlockMarker x={315} y={28} labelDx={12} label={["Tocolytics relax the muscle:", "nifedipine blocks Ca2+ entry;", "beta-2 agonists ↑ cAMP"]} />
+      <Arrow x1={230} y1={48} x2={230} y2={70} />
+      <Step x={145} y={70} w={170} h={40} label="Opposite clinical uses" sub="induction vs delaying preterm labor" color={emerald} />
+
+      <text x="230" y="130" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">Same muscle, opposite pharmacology depending on the clinical goal</text>
+    </svg>
+  );
+}
+
+// 33. Antitubercular drug targets on one mycobacterial cell diagram
+export function AntitubercularDiagram() {
+  return (
+    <svg viewBox="0 0 460 344" className="w-full" role="img" aria-label="Antitubercular drug targets on the mycobacterial cell — isoniazid, rifampin, ethambutol, and pyrazinamide">
+      <ArrowDefs />
+      <Step x={145} y={8} w={170} h={40} label="Mycobacterium tuberculosis" color={violet} />
+      <Arrow x1={230} y1={48} x2={230} y2={70} />
+      <Step x={145} y={70} w={170} h={40} label="Mycolic acid synthesis" sub="cell wall component" color={amber} />
+      <BlockMarker x={315} y={90} labelDx={12} label={["Isoniazid blocks", "mycolic acid synthesis"]} />
+      <Arrow x1={230} y1={110} x2={230} y2={132} />
+      <Step x={145} y={132} w={170} h={40} label="Bacterial RNA synthesis" sub="RNA polymerase" color={rose} />
+      <BlockMarker x={145} y={152} labelDx={-12} label={["Rifampin blocks bacterial", "RNA polymerase"]} />
+      <Arrow x1={230} y1={172} x2={230} y2={194} />
+      <Step x={145} y={194} w={170} h={40} label="Arabinogalactan synthesis" sub="cell wall component" color={teal} />
+      <BlockMarker x={315} y={214} labelDx={12} label={["Ethambutol blocks", "arabinosyl transferase"]} />
+      <Arrow x1={230} y1={234} x2={230} y2={256} />
+      <Step x={145} y={256} w={170} h={40} label="Metabolism in acidic phagosome" color={emerald} />
+      <BlockMarker x={145} y={276} labelDx={-12} label={["Pyrazinamide active here —", "exact mechanism unclear"]} />
+
+      <text x="230" y="316" textAnchor="middle" fontSize="8" fontWeight={700} fill="var(--color-muted-foreground)">Four drugs hit four independent targets simultaneously —</text>
+      <text x="230" y="328" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">this multi-drug regimen is exactly what prevents resistance from emerging</text>
+    </svg>
+  );
+}
