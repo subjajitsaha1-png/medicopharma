@@ -1,0 +1,12 @@
+{
+  "name": "Pharmacology High-Yield",
+  "short_name": "PharmHY",
+  "description": "High-yield pharmacology revision: fact sheets, flashcards, mechanism diagrams, MCQs, and a drug quick-reference.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F5F7F2",
+  "theme_color": "#0F766E",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

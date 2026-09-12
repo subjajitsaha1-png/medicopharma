@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-display: "DM Serif Display", serif;
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+
+  --color-background: oklch(0.98 0.014 145);
+  --color-foreground: oklch(0.26 0.05 200);
+  --color-card: oklch(0.995 0.005 145);
+  --color-card-foreground: oklch(0.26 0.05 200);
+  --color-popover: oklch(1 0 0);
+  --color-popover-foreground: oklch(0.129 0.042 264.695);
+  --color-primary: oklch(0.48 0.11 195);
+  --color-primary-foreground: oklch(0.99 0.005 100);
+  --color-secondary: oklch(0.87 0.1 85);
+  --color-secondary-foreground: oklch(0.32 0.09 60);
+  --color-muted: oklch(0.95 0.02 140);
+  --color-muted-foreground: oklch(0.5 0.04 200);
+  --color-accent: oklch(0.88 0.09 155);
+  --color-accent-foreground: oklch(0.3 0.1 160);
+  --color-destructive: oklch(0.577 0.245 27.325);
+  --color-destructive-foreground: oklch(0.984 0.003 247.858);
+  --color-border: oklch(0.87 0.03 180);
+  --color-input: oklch(0.87 0.03 180);
+  --color-ring: oklch(0.5 0.13 195);
+  --radius: 0.75rem;
+}
+
+.dark {
+  --color-background: oklch(0.19 0.02 240);
+  --color-foreground: oklch(0.93 0.01 145);
+  --color-card: oklch(0.24 0.025 240);
+  --color-card-foreground: oklch(0.93 0.01 145);
+  --color-popover: oklch(0.22 0.02 240);
+  --color-popover-foreground: oklch(0.93 0.01 145);
+  --color-primary: oklch(0.72 0.13 195);
+  --color-primary-foreground: oklch(0.16 0.02 240);
+  --color-secondary: oklch(0.4 0.09 85);
+  --color-secondary-foreground: oklch(0.95 0.02 90);
+  --color-muted: oklch(0.28 0.02 240);
+  --color-muted-foreground: oklch(0.72 0.02 200);
+  --color-accent: oklch(0.32 0.05 160);
+  --color-accent-foreground: oklch(0.92 0.03 155);
+  --color-destructive: oklch(0.6 0.22 25);
+  --color-destructive-foreground: oklch(0.98 0.005 100);
+  --color-border: oklch(0.34 0.03 220);
+  --color-input: oklch(0.34 0.03 220);
+  --color-ring: oklch(0.68 0.13 195);
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+}
