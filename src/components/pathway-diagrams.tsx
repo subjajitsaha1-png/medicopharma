@@ -27,9 +27,25 @@ function Arrow({ x1, y1, x2, y2 }: { x1: number; y1: number; x2: number; y2: num
 }
 
 /** A small red "blocked here" no-entry marker for labeling a drug's exact
-    site of action on a pathway. label may be one string or several lines. */
-function BlockMarker({ x, y, label, labelDx = 12, color = rose }: { x: number; y: number; label: string | string[]; labelDx?: number; color?: { fg: string } }) {
+    site of action on a pathway. label may be one string or several lines.
+    center=true stacks the label centered below the marker instead of to
+    one side — used when boxes sit side by side and a sideways label
+    would collide with a neighboring box. */
+function BlockMarker({ x, y, label, labelDx = 12, center = false, color = rose }: { x: number; y: number; label: string | string[]; labelDx?: number; center?: boolean; color?: { fg: string } }) {
   const lines = Array.isArray(label) ? label : [label];
+  if (center) {
+    return (
+      <g>
+        <circle cx={x} cy={y} r={7} fill="var(--color-card)" stroke={color.fg} strokeWidth={2} />
+        <line x1={x - 4.2} y1={y - 4.2} x2={x + 4.2} y2={y + 4.2} stroke={color.fg} strokeWidth={2} />
+        <text x={x} fontSize="7.5" fontWeight={700} fill={color.fg} textAnchor="middle">
+          {lines.map((line, i) => (
+            <tspan key={i} x={x} y={y + 16 + i * 11}>{line}</tspan>
+          ))}
+        </text>
+      </g>
+    );
+  }
   return (
     <g>
       <circle cx={x} cy={y} r={7} fill="var(--color-card)" stroke={color.fg} strokeWidth={2} />
@@ -226,6 +242,33 @@ export function CoagulationDiagram() {
   );
 }
 
+// 6b. Antiplatelet mechanisms on one platelet activation diagram
+export function PlateletActivationDiagram() {
+  return (
+    <svg viewBox="0 0 460 364" className="w-full" role="img" aria-label="Platelet activation pathway with aspirin, clopidogrel, and GPIIb/IIIa inhibitor sites of action">
+      <ArrowDefs />
+      <Step x={145} y={8} w={170} h={36} label="Platelet activation" sub="triggered by vessel injury" color={violet} />
+      <Arrow x1={200} y1={44} x2={170} y2={70} />
+      <Arrow x1={260} y1={44} x2={290} y2={70} />
+
+      <Step x={15} y={70} w={190} h={44} label="Arachidonic acid → COX-1" sub="→ Thromboxane A2 (TXA2)" color={amber} />
+      <BlockMarker x={110} y={132} center label={["Aspirin blocks COX-1", "irreversibly — lasts a platelet's", "lifespan (~7–10 days)"]} />
+
+      <Step x={255} y={70} w={190} h={44} label="ADP release" sub="→ P2Y12 receptor" color={rose} />
+      <BlockMarker x={350} y={132} center label={["Clopidogrel blocks P2Y12", "irreversibly — a prodrug", "needing CYP2C19 activation"]} />
+
+      <Arrow x1={170} y1={114} x2={190} y2={180} />
+      <Arrow x1={290} y1={114} x2={270} y2={180} />
+      <Step x={145} y={180} w={170} h={40} label="GPIIb/IIIa activation" sub="conformational change" color={emerald} />
+      <BlockMarker x={230} y={238} center label={["Abciximab, tirofiban, eptifibatide", "block GPIIb/IIIa directly —", "the final common pathway"]} />
+
+      <Arrow x1={230} y1={220} x2={230} y2={286} />
+      <Step x={110} y={286} w={240} h={40} label="Fibrinogen cross-links platelets" sub="stable aggregate" color={violet} />
+
+      <text x="230" y="344" textAnchor="middle" fontSize="8" fontWeight={700} fill="var(--color-muted-foreground)">GPIIb/IIIa blockade works regardless of what triggered activation — the true final common step</text>
+    </svg>
+  );
+}
 // 8. Opioid receptor mechanism & analgesic ladder
 export function OpioidDiagram() {
   return (

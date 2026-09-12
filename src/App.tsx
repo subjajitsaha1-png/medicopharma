@@ -45,6 +45,7 @@ import {
   GastricAcidDiagram,
   HivReplicationDiagram,
   GpcrSignalingDiagram,
+  PlateletActivationDiagram,
 } from "@/components/pathway-diagrams";
 
 type Tab = "sheets" | "flashcards" | "diagrams" | "reference" | "practical" | "classification";
@@ -146,6 +147,7 @@ const DIAGRAMS: { topicId: string; title: string; description: string; pearl: st
   { topicId: "cvs", title: "RAAS Pathway & Drug Targets", description: "Where ACE inhibitors, ARBs, and aldosterone antagonists intervene.", pearl: "Direct renin inhibitors (aliskiren) act one step earlier than ACE inhibitors — blocking the very first step of the whole cascade.", Component: RaasDiagram },
   { topicId: "cvs", title: "Antiarrhythmics on the Action Potential", description: "Mapping Vaughan-Williams classes onto the phases they block.", pearl: "Class IB agents (lidocaine) preferentially act on ischemic/depolarized tissue, making them useful specifically for ventricular arrhythmias after MI.", Component: AntiarrhythmicDiagram },
   { topicId: "cvs", title: "Coagulation Cascade & Anticoagulants", description: "Intrinsic and extrinsic pathways converging on the common pathway, with heparin, warfarin, and DOAC sites of action marked directly on the cascade.", pearl: "Direct oral anticoagulants (rivaroxaban, apixaban) skip antithrombin entirely and directly inhibit factor Xa — no routine monitoring needed, unlike warfarin.", Component: CoagulationDiagram },
+  { topicId: "cvs", title: "Antiplatelet Mechanisms", description: "Aspirin (COX-1), clopidogrel (P2Y12), and GPIIb/IIIa inhibitors, all shown on one platelet activation pathway.", pearl: "Aspirin and clopidogrel block two different upstream triggers, but GPIIb/IIIa inhibitors block the final common step of aggregation — which is why they're reserved for high-risk situations like PCI, not everyday use.", Component: PlateletActivationDiagram },
   { topicId: "cvs", title: "Diuretic Sites Along the Nephron", description: "Where loop diuretics, thiazides, potassium-sparing agents, and carbonic anhydrase inhibitors each act.", pearl: "Loop diuretics act at the thick ascending limb, where up to 25% of filtered Na+ is normally reabsorbed — that's why they're the most potent diuretic class.", Component: NephronDiureticDiagram },
   { topicId: "cns", title: "Na+ Channel Gating & Antiepileptic Block", description: "Resting, open, and inactivated channel states — and why antiepileptics target the inactivated state specifically.", pearl: "Use-dependent block means these drugs preferentially block neurons firing rapidly and repetitively (as in a seizure focus) while sparing normal, slower firing — a key reason for their selectivity.", Component: IonChannelGatingDiagram },
   { topicId: "cns", title: "GABA-A Receptor: Benzodiazepine vs Barbiturate", description: "The chloride channel both drug classes modulate — and why one is far safer in overdose than the other.", pearl: "Flumazenil only blocks the benzodiazepine site — it does nothing for a barbiturate overdose, which has no specific antidote.", Component: GabaReceptorDiagram },
