@@ -84,6 +84,19 @@ body {
   animation: pathway-curve-draw 1.3s ease-out both;
 }
 
+/* Generic moving-dot animation for receptor-binding / ion / molecule motion.
+   Start and end offsets are set per-instance via CSS custom properties
+   (--lx0/--ly0 start, --lx1/--ly1 end) so one keyframe serves every diagram
+   that needs a docking ligand, a diffusing ion, or a traveling drug particle. */
+@keyframes pathway-ligand-move {
+  0%, 8% { transform: translate(var(--lx0, 0px), var(--ly0, 0px)); opacity: 1; }
+  45%, 60% { transform: translate(var(--lx1, 0px), var(--ly1, 0px)); opacity: 1; }
+  92%, 100% { transform: translate(var(--lx0, 0px), var(--ly0, 0px)); opacity: 1; }
+}
+.pathway-ligand {
+  animation: pathway-ligand-move 2.6s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .pathway-arrow-flow {
     animation: none;
@@ -92,6 +105,9 @@ body {
     animation: none;
   }
   .pathway-curve-draw {
+    animation: none;
+  }
+  .pathway-ligand {
     animation: none;
   }
 }

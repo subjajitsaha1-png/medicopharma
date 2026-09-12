@@ -298,3 +298,160 @@ export function CellCycleDiagram() {
     </svg>
   );
 }
+
+// 12. Autonomic ganglionic transmission (nicotinic ACh)
+export function GanglionTransmissionDiagram() {
+  return (
+    <svg viewBox="0 0 380 190" className="w-full" role="img" aria-label="Autonomic ganglionic transmission diagram showing acetylcholine acting on nicotinic receptors">
+      <ArrowDefs />
+      <Step x={10} y={30} w={100} h={44} label="Preganglionic" sub="neuron terminal" color={teal} />
+      <Arrow x1={110} y1={52} x2={150} y2={52} />
+      <circle cx={130} cy={52} r={5} fill={amber.fg} className="pathway-ligand" style={{ ["--lx0" as string]: "0px", ["--ly0" as string]: "0px", ["--lx1" as string]: "28px", ["--ly1" as string]: "0px" }} />
+      <Step x={150} y={30} w={110} h={44} label="Nicotinic (N) receptor" sub="ganglion synapse" color={amber} />
+      <Arrow x1={260} y1={52} x2={300} y2={52} />
+      <Step x={300} y={30} w={70} h={44} label="Postganglionic" color={teal} />
+      <Arrow x1={205} y1={74} x2={205} y2={110} />
+      <Step x={150} y={112} w={110} h={44} label="Effector organ" sub="smooth muscle / gland" color={emerald} />
+      <text x="10" y="150" fontSize="8.5" fill="var(--color-muted-foreground)">Nicotinic receptors sit at EVERY autonomic ganglion — both</text>
+      <text x="10" y="162" fontSize="8.5" fill="var(--color-muted-foreground)">sympathetic and parasympathetic — plus the skeletal NMJ.</text>
+      <text x="150" y="182" textAnchor="middle" fontSize="8.5" fontWeight={700} fill={rose.fg}>Ganglion blockers (hexamethonium, trimethaphan) act here</text>
+    </svg>
+  );
+}
+
+// 13. Na+ channel gating and antiepileptic use-dependent block
+export function IonChannelGatingDiagram() {
+  const states = [
+    { label: "Resting", sub: "closed, ready", color: teal },
+    { label: "Open", sub: "Na+ influx", color: amber },
+    { label: "Inactivated", sub: "refractory", color: rose },
+  ];
+  return (
+    <svg viewBox="0 0 380 190" className="w-full" role="img" aria-label="Sodium channel gating states and antiepileptic drug action">
+      <ArrowDefs />
+      {states.map((s, i) => (
+        <Step key={s.label} x={20 + i * 125} y={30} w={100} h={50} label={s.label} sub={s.sub} color={s.color} />
+      ))}
+      <Arrow x1={120} y1={55} x2={145} y2={55} />
+      <Arrow x1={245} y1={55} x2={270} y2={55} />
+      <path d="M 320 55 C 360 55, 360 130, 190 130 C 60 130, 40 100, 70 60" fill="none" stroke="var(--color-muted-foreground)" strokeWidth={1.4} strokeDasharray="3 3" opacity={0.5} markerEnd="url(#arrowhead)" />
+      <text x="190" y="145" textAnchor="middle" fontSize="8.5" fill="var(--color-muted-foreground)">returns to resting after the refractory period</text>
+      <circle cx={70} cy={55} r={4.5} fill={amber.fg} className="pathway-ligand" style={{ ["--lx0" as string]: "0px", ["--ly0" as string]: "0px", ["--lx1" as string]: "230px", ["--ly1" as string]: "0px" }} />
+      <text x="190" y="170" textAnchor="middle" fontSize="9" fontWeight={700} fill={rose.fg}>Phenytoin/carbamazepine bind the INACTIVATED state preferentially</text>
+      <text x="190" y="184" textAnchor="middle" fontSize="8.5" fill="var(--color-muted-foreground)">— prolonging it, producing use-dependent block of rapidly firing neurons</text>
+    </svg>
+  );
+}
+
+// 14. Oral absorption and hepatic first-pass metabolism vs IV
+export function FirstPassMetabolismDiagram() {
+  return (
+    <svg viewBox="0 0 380 200" className="w-full" role="img" aria-label="Oral first-pass metabolism compared with intravenous administration">
+      <ArrowDefs />
+      <text x="10" y="16" fontSize="9" fontWeight={700} fill={teal.fg}>Oral route</text>
+      <Step x={10} y={24} w={80} h={40} label="Oral dose" color={teal} />
+      <Arrow x1={90} y1={44} x2={118} y2={44} />
+      <Step x={118} y={24} w={80} h={40} label="GI absorption" color={teal} />
+      <Arrow x1={198} y1={44} x2={226} y2={44} />
+      <Step x={226} y={24} w={70} h={40} label="Portal vein" color={teal} />
+      <Arrow x1={296} y1={44} x2={296} y2={44} />
+      <Arrow x1={261} y1={64} x2={261} y2={90} />
+      <Step x={196} y={92} w={130} h={46} label="Liver — CYP450" sub="first-pass metabolism" color={amber} />
+      <circle cx={40} cy={44} r={4.5} fill={emerald.fg} className="pathway-ligand" style={{ ["--lx0" as string]: "0px", ["--ly0" as string]: "0px", ["--lx1" as string]: "220px", ["--ly1" as string]: "70px" }} />
+      <Arrow x1={261} y1={138} x2={261} y2={160} />
+      <Step x={166} y={162} w={190} h={34} label="Reduced fraction reaches systemic circulation" color={rose} />
+      <text x="10" y="180" fontSize="9" fontWeight={700} fill={emerald.fg}>IV route (bypasses first pass)</text>
+      <path d="M 55 24 L 55 4 L 340 4 L 340 178" fill="none" stroke={emerald.fg} strokeWidth={1.6} strokeDasharray="4 3" opacity={0.6} markerEnd="url(#arrowhead)" />
+      <text x="345" y="183" fontSize="8.5" fontWeight={700} fill={emerald.fg}>F = 1</text>
+    </svg>
+  );
+}
+
+// 15. Zero-order vs first-order elimination kinetics
+export function KineticsOrderDiagram() {
+  const t = [0, 1, 2, 3, 4, 5];
+  const firstOrderY = t.map((x) => 140 - 120 * Math.pow(0.5, x));
+  const firstOrderPath = t.map((x, i) => `${i === 0 ? "M" : "L"} ${40 + x * 55} ${firstOrderY[i]}`).join(" ");
+  const zeroOrderPath = "M 40 20 L 260 140";
+  return (
+    <svg viewBox="0 0 340 190" className="w-full" role="img" aria-label="Zero-order versus first-order elimination kinetics">
+      <ArrowDefs />
+      <line x1="30" y1="150" x2="320" y2="150" stroke="var(--color-muted-foreground)" strokeWidth={1.5} />
+      <line x1="30" y1="150" x2="30" y2="10" stroke="var(--color-muted-foreground)" strokeWidth={1.5} />
+      <text x="175" y="168" textAnchor="middle" fontSize="10" fill="var(--color-muted-foreground)">Time →</text>
+      <text x="10" y="80" textAnchor="middle" fontSize="10" fill="var(--color-muted-foreground)" transform="rotate(-90 10 80)">Plasma concentration →</text>
+      <path d={firstOrderPath} fill="none" stroke={teal.fg} strokeWidth={2.5} pathLength={1} strokeDasharray={1} className="pathway-curve-draw" />
+      <path d={zeroOrderPath} fill="none" stroke={rose.fg} strokeWidth={2.5} pathLength={1} strokeDasharray={1} className="pathway-curve-draw" />
+      <text x="230" y="42" fontSize="9" fontWeight={700} fill={teal.fg}>First-order</text>
+      <text x="200" y="54" fontSize="8" fill="var(--color-muted-foreground)">constant FRACTION/time; fixed t½</text>
+      <text x="150" y="30" fontSize="9" fontWeight={700} fill={rose.fg}>Zero-order</text>
+      <text x="130" y="14" fontSize="8" fill="var(--color-muted-foreground)">constant AMOUNT/time; t½ not fixed</text>
+      <text x="35" y="165" fontSize="7.5" fill="var(--color-muted-foreground)">most drugs</text>
+      <text x="35" y="176" fontSize="7.5" fill="var(--color-muted-foreground)">ethanol, phenytoin (high dose), aspirin (overdose)</text>
+    </svg>
+  );
+}
+
+// 16. Single-dose plasma concentration-time curve and therapeutic window
+export function PlasmaConcentrationTimeDiagram() {
+  const curve = "M 30 145 C 50 95, 75 35, 110 30 C 150 25, 200 55, 240 90 C 270 115, 300 130, 330 138";
+  return (
+    <svg viewBox="0 0 350 190" className="w-full" role="img" aria-label="Plasma concentration-time curve with therapeutic window">
+      <ArrowDefs />
+      <rect x="30" y="55" width="300" height="35" fill={emerald.bg} opacity={0.5} />
+      <line x1="30" y1="55" x2="330" y2="55" stroke={rose.fg} strokeOpacity={0.5} strokeWidth={1.2} strokeDasharray="3 3" />
+      <line x1="30" y1="90" x2="330" y2="90" stroke={emerald.fg} strokeOpacity={0.5} strokeWidth={1.2} strokeDasharray="3 3" />
+      <text x="335" y="58" fontSize="7.5" fill={rose.fg}>MTC</text>
+      <text x="335" y="93" fontSize="7.5" fill={emerald.fg}>MEC</text>
+      <text x="70" y="70" fontSize="8" fontWeight={700} fill={emerald.fg}>Therapeutic window</text>
+      <line x1="30" y1="150" x2="330" y2="150" stroke="var(--color-muted-foreground)" strokeWidth={1.5} />
+      <line x1="30" y1="150" x2="30" y2="10" stroke="var(--color-muted-foreground)" strokeWidth={1.5} />
+      <text x="180" y="168" textAnchor="middle" fontSize="10" fill="var(--color-muted-foreground)">Time →</text>
+      <text x="10" y="90" textAnchor="middle" fontSize="10" fill="var(--color-muted-foreground)" transform="rotate(-90 10 90)">Plasma concentration →</text>
+      <path d={curve} fill="none" stroke={violet.fg} strokeWidth={2.5} pathLength={1} strokeDasharray={1} className="pathway-curve-draw" />
+      <line x1="110" y1="30" x2="110" y2="150" stroke={violet.fg} strokeOpacity={0.35} strokeDasharray="2 3" />
+      <text x="110" y="22" textAnchor="middle" fontSize="8" fontWeight={700} fill={violet.fg}>Cmax</text>
+      <text x="55" y="160" fontSize="7.5" fill="var(--color-muted-foreground)">absorption phase</text>
+      <text x="230" y="160" fontSize="7.5" fill="var(--color-muted-foreground)">elimination phase</text>
+      <text x="90" y="185" textAnchor="middle" fontSize="7.5" fill="var(--color-muted-foreground)">Tmax = time to peak concentration · AUC reflects total drug exposure</text>
+    </svg>
+  );
+}
+
+// 17. Receptor binding — agonist vs competitive vs non-competitive antagonist
+export function ReceptorBindingDiagram() {
+  return (
+    <svg viewBox="0 0 380 210" className="w-full" role="img" aria-label="Agonist, competitive antagonist, and non-competitive antagonist receptor binding">
+      <ArrowDefs />
+      <text x="10" y="16" fontSize="9" fontWeight={700} fill={teal.fg}>Agonist alone</text>
+      <rect x="10" y="24" width="90" height="40" rx="10" fill={teal.bg} stroke={teal.fg} strokeOpacity={0.3} />
+      <text x="55" y="48" textAnchor="middle" fontSize="9" fontWeight={700} fill={teal.fg}>Receptor</text>
+      <circle cx={30} cy={44} r={5} fill={violet.fg} className="pathway-ligand" style={{ ["--lx0" as string]: "-40px", ["--ly0" as string]: "0px", ["--lx1" as string]: "0px", ["--ly1" as string]: "0px" }} />
+      <Arrow x1={100} y1={44} x2={130} y2={44} />
+      <Step x={130} y={24} w={90} h={40} label="Signal ON" sub="conformational change" color={emerald} />
+
+      <text x="10" y="90" fontSize="9" fontWeight={700} fill={amber.fg}>+ Competitive antagonist (same site)</text>
+      <rect x="10" y="98" width="90" height="40" rx="10" fill={amber.bg} stroke={amber.fg} strokeOpacity={0.3} />
+      <text x="55" y="122" textAnchor="middle" fontSize="9" fontWeight={700} fill={amber.fg}>Receptor</text>
+      <circle cx={30} cy={118} r={5} fill={amber.fg} className="pathway-ligand" style={{ ["--lx0" as string]: "-40px", ["--ly0" as string]: "0px", ["--lx1" as string]: "0px", ["--ly1" as string]: "0px" }} />
+      <Arrow x1={100} y1={118} x2={130} y2={118} />
+      <Step x={130} y={98} w={90} h={40} label="Signal weak" sub="surmountable ↑agonist" color={amber} />
+
+      <text x="10" y="164" fontSize="9" fontWeight={700} fill={rose.fg}>+ Non-competitive (allosteric site)</text>
+      <rect x="10" y="172" width="90" height="40" rx="10" fill={rose.bg} stroke={rose.fg} strokeOpacity={0.3} />
+      <text x="55" y="196" textAnchor="middle" fontSize="9" fontWeight={700} fill={rose.fg}>Receptor</text>
+      <circle cx={30} cy={192} r={5} fill={teal.fg} />
+      <circle cx={78} cy={182} r={4} fill={rose.fg} />
+      <Arrow x1={100} y1={192} x2={130} y2={192} />
+      <Step x={130} y={172} w={90} h={40} label="Signal OFF" sub="insurmountable" color={rose} />
+
+      <text x="235" y="95" fontSize="8" fill="var(--color-muted-foreground)" style={{ maxWidth: 100 }}>Same-site competitor</text>
+      <text x="235" y="107" fontSize="8" fill="var(--color-muted-foreground)">lowers apparent potency,</text>
+      <text x="235" y="119" fontSize="8" fill="var(--color-muted-foreground)">not maximum effect.</text>
+      <text x="235" y="169" fontSize="8" fill="var(--color-muted-foreground)">Allosteric binder lowers</text>
+      <text x="235" y="181" fontSize="8" fill="var(--color-muted-foreground)">the maximum effect even</text>
+      <text x="235" y="193" fontSize="8" fill="var(--color-muted-foreground)">with agonist still bound.</text>
+    </svg>
+  );
+}
+
