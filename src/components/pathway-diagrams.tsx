@@ -391,6 +391,32 @@ export function GanglionTransmissionDiagram() {
   );
 }
 
+// 12b. Neuromuscular junction: depolarizing vs non-depolarizing blockade
+export function NmjBlockadeDiagram() {
+  return (
+    <svg viewBox="0 0 460 290" className="w-full" role="img" aria-label="Neuromuscular junction transmission with depolarizing and non-depolarizing blocking drugs compared">
+      <ArrowDefs />
+      <Step x={105} y={8} w={250} h={40} label="Motor neuron releases ACh" sub="binds Nm receptor at the motor end plate" color={teal} />
+      <Arrow x1={170} y1={48} x2={140} y2={70} />
+      <Arrow x1={290} y1={48} x2={320} y2={70} />
+
+      <Step x={15} y={70} w={200} h={40} label="Succinylcholine" sub="mimics ACh — binds Nm receptor" color={amber} />
+      <Arrow x1={115} y1={110} x2={115} y2={126} />
+      <Step x={15} y={126} w={200} h={44} label="Sustained depolarization" sub="brief fasciculations, then flaccid paralysis" color={amber} />
+      <BlockMarker x={115} y={188} center label={["Not hydrolyzed by AChE —", "metabolized by plasma", "pseudocholinesterase instead"]} />
+      <text x={115} y="252" textAnchor="middle" fontSize="7.5" fontWeight={700} fill={rose.fg}>Neostigmine WORSENS this block</text>
+
+      <Step x={245} y={70} w={200} h={40} label="Vecuronium / atracurium" sub="competes with ACh at Nm receptor" color={rose} />
+      <Arrow x1={345} y1={110} x2={345} y2={126} />
+      <Step x={245} y={126} w={200} h={44} label="Receptor blocked, channel shut" sub="flaccid paralysis, no fasciculations" color={rose} />
+      <BlockMarker x={345} y={188} center label={["Competitive antagonist —", "surmountable by raising", "ACh at the synapse"]} />
+      <text x={345} y="252" textAnchor="middle" fontSize="7.5" fontWeight={700} fill={emerald.fg}>Neostigmine REVERSES this block</text>
+
+      <text x="230" y="274" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">Same receptor, opposite drug behavior — one is an agonist that desensitizes it, the other a competitive blocker</text>
+    </svg>
+  );
+}
+
 // 13. Na+ channel gating and antiepileptic use-dependent block
 export function IonChannelGatingDiagram() {
   const states = [
