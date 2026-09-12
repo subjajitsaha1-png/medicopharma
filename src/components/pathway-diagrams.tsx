@@ -1000,3 +1000,273 @@ export function AntitubercularDiagram() {
     </svg>
   );
 }
+
+// 34. Antifungal mechanisms: azoles, polyenes, echinocandins
+export function AntifungalDiagram() {
+  return (
+    <svg viewBox="0 0 460 282" className="w-full" role="img" aria-label="Antifungal drug mechanisms at three independent fungal cell targets">
+      <ArrowDefs />
+      <Step x={145} y={8} w={170} h={40} label="Ergosterol synthesis" sub="fungal CYP450 (lanosterol demethylase)" color={amber} />
+      <BlockMarker x={315} y={28} labelDx={12} label={["Azoles (fluconazole) inhibit", "this enzyme"]} />
+      <Arrow x1={230} y1={48} x2={230} y2={70} />
+      <Step x={145} y={70} w={170} h={40} label="Ergosterol in cell membrane" sub="maintains membrane integrity" color={teal} />
+      <BlockMarker x={145} y={90} labelDx={-12} label={["Polyenes (amphotericin B)", "bind ergosterol, forming pores"]} />
+      <Arrow x1={230} y1={110} x2={230} y2={132} />
+      <Step x={145} y={132} w={170} h={40} label="Beta-glucan synthase" sub="fungal cell wall component" color={rose} />
+      <BlockMarker x={315} y={152} labelDx={12} label={["Echinocandins (caspofungin)", "inhibit beta-glucan synthesis"]} />
+      <Arrow x1={230} y1={172} x2={230} y2={194} />
+      <Step x={105} y={194} w={250} h={40} label="Membrane/wall disruption" sub="fungal cell death" color={emerald} />
+
+      <text x="230" y="254" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">Selective toxicity comes from targeting ergosterol/fungal wall components</text>
+      <text x="230" y="266" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">that human cells (which use cholesterol, not ergosterol) simply don't have</text>
+    </svg>
+  );
+}
+
+// 35. Antimalarial mechanisms by parasite life-cycle stage
+export function AntimalarialDiagram() {
+  return (
+    <svg viewBox="0 0 460 344" className="w-full" role="img" aria-label="Antimalarial drug mechanisms mapped to the parasite life cycle stage each one targets">
+      <ArrowDefs />
+      <Step x={145} y={8} w={170} h={40} label="Mosquito bite → sporozoites" sub="liver stage begins" color={violet} />
+      <Arrow x1={230} y1={48} x2={230} y2={70} />
+      <Step x={145} y={70} w={170} h={40} label="Liver (exo-erythrocytic) stage" sub="hypnozoites form in P. vivax/ovale" color={amber} />
+      <BlockMarker x={315} y={90} labelDx={12} label={["Primaquine kills hypnozoites", "— the only 'radical cure' drug"]} />
+      <Arrow x1={230} y1={110} x2={230} y2={132} />
+      <Step x={145} y={132} w={170} h={40} label="Blood (erythrocytic) stage" sub="merozoites invade RBCs — symptoms begin" color={teal} />
+      <BlockMarker x={145} y={152} labelDx={-12} label={["Chloroquine blocks heme", "polymerization to hemozoin"]} />
+      <BlockMarker x={315} y={152} labelDx={12} label={["Artemisinin generates", "free radicals in the parasite"]} />
+      <Arrow x1={230} y1={172} x2={230} y2={194} />
+      <Step x={145} y={194} w={170} h={40} label="Gametocytes form" sub="the transmission stage" color={rose} />
+      <BlockMarker x={315} y={214} labelDx={12} label={["Primaquine also kills", "gametocytes — blocks transmission"]} />
+      <Arrow x1={230} y1={234} x2={230} y2={256} />
+      <Step x={105} y={256} w={250} h={40} label="Clinical cure vs transmission block" sub="different drugs for different jobs" color={emerald} />
+
+      <text x="230" y="316" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">Chloroquine/artemisinin treat the acute illness; only primaquine reaches</text>
+      <text x="230" y="328" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">the dormant liver hypnozoites — screen for G6PD deficiency before giving it</text>
+    </svg>
+  );
+}
+
+// 36. Anthelmintic mechanisms: albendazole vs ivermectin
+export function AnthelminticDiagram() {
+  return (
+    <svg viewBox="0 0 460 282" className="w-full" role="img" aria-label="Anthelmintic drug mechanisms comparing microtubule inhibition with glutamate-gated chloride channel activation">
+      <ArrowDefs />
+      <Step x={145} y={8} w={170} h={40} label="Helminth microtubules" sub="cytoskeleton, glucose uptake" color={amber} />
+      <BlockMarker x={315} y={28} labelDx={12} label={["Albendazole/mebendazole block", "tubulin polymerization"]} />
+      <Arrow x1={230} y1={48} x2={230} y2={70} />
+      <Step x={145} y={70} w={170} h={40} label="Glucose uptake fails" sub="parasite starves, immobilized" color={amber} />
+
+      <Step x={145} y={132} w={170} h={40} label="Glutamate-gated Cl- channels" sub="invertebrate-specific" color={teal} />
+      <BlockMarker x={315} y={152} labelDx={12} label={["Ivermectin opens these", "channels → paralysis"]} />
+      <Arrow x1={230} y1={172} x2={230} y2={194} />
+      <Step x={105} y={194} w={250} h={40} label="Parasite paralysis/death, expelled" color={emerald} />
+
+      <text x="230" y="254" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">Glutamate-gated Cl- channels don't exist in mammals — ivermectin's</text>
+      <text x="230" y="266" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">selective toxicity depends on this, plus limited CNS entry via P-glycoprotein</text>
+    </svg>
+  );
+}
+
+// 37. Cancer immunotherapy: PD-1/PD-L1 and CTLA-4 checkpoint blockade
+export function CheckpointBlockadeDiagram() {
+  return (
+    <svg viewBox="0 0 460 282" className="w-full" role="img" aria-label="Cancer immunotherapy checkpoint blockade restoring T-cell activity against tumor cells" >
+      <ArrowDefs />
+      <Step x={145} y={8} w={170} h={40} label="T-cell recognizes tumor antigen" color={violet} />
+      <Arrow x1={230} y1={48} x2={230} y2={70} />
+      <Step x={145} y={70} w={170} h={40} label="PD-1 (T cell) binds PD-L1" sub="tumor cell's inhibitory signal" color={amber} />
+      <BlockMarker x={315} y={90} labelDx={12} label={["Pembrolizumab / nivolumab", "block PD-1"]} />
+      <Arrow x1={230} y1={110} x2={230} y2={132} />
+      <Step x={145} y={132} w={170} h={40} label="CTLA-4 outcompetes CD28" sub="for B7 costimulatory signal" color={rose} />
+      <BlockMarker x={145} y={152} labelDx={-12} label={["Ipilimumab blocks", "CTLA-4"]} />
+      <Arrow x1={230} y1={172} x2={230} y2={194} />
+      <Step x={105} y={194} w={250} h={40} label="T-cell activation restored" sub="→ tumor cell killing" color={emerald} />
+
+      <text x="230" y="254" textAnchor="middle" fontSize="8" fontWeight={700} fill="var(--color-muted-foreground)">The trade-off: releasing the brakes on T-cells can also unleash them on</text>
+      <text x="230" y="266" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">healthy tissue — immune-related adverse effects like colitis, pneumonitis</text>
+    </svg>
+  );
+}
+
+// 38. P-glycoprotein efflux pump: drug resistance and interactions
+export function PgpEffluxDiagram() {
+  return (
+    <svg viewBox="0 0 460 222" className="w-full" role="img" aria-label="P-glycoprotein efflux pump mechanism and its role in drug interactions" >
+      <ArrowDefs />
+      <Step x={145} y={8} w={170} h={40} label="Drug crosses a barrier" sub="gut epithelium, BBB, renal tubule" color={violet} />
+      <Arrow x1={230} y1={48} x2={230} y2={70} />
+      <Step x={145} y={70} w={170} h={40} label="P-glycoprotein (ABC pump)" sub="actively pumps drug back out" color={amber} />
+      <BlockMarker x={145} y={90} labelDx={-12} label={["Inhibitors (verapamil,", "ketoconazole) ↑ substrate levels"]} />
+      <BlockMarker x={315} y={90} labelDx={12} label={["Inducers (rifampin)", "↓ substrate levels"]} />
+      <Arrow x1={230} y1={110} x2={230} y2={132} />
+      <Step x={105} y={132} w={250} h={40} label="Altered absorption / CNS entry / resistance" color={rose} />
+
+      <text x="230" y="192" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">Digoxin is the classic P-gp substrate — this is exactly why verapamil</text>
+      <text x="230" y="204" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">and other P-gp inhibitors can precipitate digoxin toxicity</text>
+    </svg>
+  );
+}
+
+// 39. Renal tubular ion trapping (pH-dependent reabsorption/excretion)
+export function IonTrappingDiagram() {
+  return (
+    <svg viewBox="0 0 460 150" className="w-full" role="img" aria-label="Renal tubular ion trapping showing pH-dependent excretion of weak acids and weak bases" >
+      <ArrowDefs />
+      <Step x={145} y={8} w={170} h={40} label="Drug filtered into renal tubule" sub="urine pH determines ionization" color={violet} />
+      <BlockMarker x={145} y={28} labelDx={-12} label={["Alkaline urine traps weak ACIDS", "(aspirin) — ionized, can't be", "reabsorbed, excreted faster"]} />
+      <BlockMarker x={315} y={28} labelDx={12} label={["Acidic urine traps weak BASES", "(amphetamine) — ionized, can't", "be reabsorbed, excreted faster"]} />
+      <Arrow x1={230} y1={48} x2={230} y2={70} />
+      <Step x={145} y={70} w={170} h={40} label="Ion trapping used therapeutically" sub="e.g. urinary alkalinization in ASA overdose" color={emerald} />
+
+      <text x="230" y="130" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">Only the un-ionized (uncharged) form crosses tubular membrane to be reabsorbed</text>
+    </svg>
+  );
+}
+
+// 40. Beta-blocker cardiac mechanism
+export function BetaBlockerDiagram() {
+  return (
+    <svg viewBox="0 0 460 282" className="w-full" role="img" aria-label="Beta-blocker cardiac mechanism, cardioselective versus non-selective" >
+      <ArrowDefs />
+      <Step x={145} y={8} w={170} h={40} label="Beta-1 receptor" sub="SA node, AV node, myocardium" color={violet} />
+      <Arrow x1={230} y1={48} x2={230} y2={70} />
+      <Step x={145} y={70} w={170} h={40} label="Beta-blocker occupies receptor" sub="competitive antagonist" color={amber} />
+      <BlockMarker x={315} y={90} labelDx={12} label={["Cardioselective (atenolol,", "metoprolol) vs non-selective", "(propranolol, also blocks β2)"]} />
+      <Arrow x1={230} y1={110} x2={230} y2={132} />
+      <Step x={145} y={132} w={170} h={40} label="↓ cAMP → ↓ Ca2+ handling" color={teal} />
+      <Arrow x1={230} y1={172} x2={230} y2={194} />
+      <Step x={105} y={194} w={250} h={40} label="↓ rate, ↓ contractility, ↓ AV conduction" color={emerald} />
+
+      <text x="230" y="254" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">Non-selective agents also block beta-2 — bronchospasm risk in asthma,</text>
+      <text x="230" y="266" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">and masking of tachycardia, a key hypoglycemia warning sign, in diabetics</text>
+    </svg>
+  );
+}
+
+// 41. Calcium channel blocker mechanism: dihydropyridine vs non-dihydropyridine
+export function CalciumChannelBlockerDiagram() {
+  return (
+    <svg viewBox="0 0 460 282" className="w-full" role="img" aria-label="Calcium channel blocker mechanism comparing dihydropyridine vascular selectivity with non-dihydropyridine cardiac selectivity" >
+      <ArrowDefs />
+      <Step x={145} y={8} w={170} h={40} label="L-type Ca2+ channels" sub="vascular smooth muscle & cardiac tissue" color={violet} />
+      <Arrow x1={190} y1={48} x2={150} y2={70} />
+      <Arrow x1={270} y1={48} x2={310} y2={70} />
+      <Step x={15} y={70} w={200} h={40} label="Dihydropyridines" sub="amlodipine, nifedipine" color={amber} />
+      <BlockMarker x={110} y={132} center label={["Mainly vascular smooth", "muscle → vasodilation,", "minimal cardiac effect"]} />
+      <Step x={245} y={70} w={200} h={40} label="Non-dihydropyridines" sub="verapamil, diltiazem" color={rose} />
+      <BlockMarker x={350} y={132} center label={["Mainly cardiac tissue →", "↓ rate, ↓ contractility,", "↓ AV conduction"]} />
+
+      <text x="230" y="190" textAnchor="middle" fontSize="8" fontWeight={700} fill="var(--color-muted-foreground)">Combining a non-DHP with a beta-blocker risks severe bradycardia/heart block —</text>
+      <text x="230" y="202" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">dihydropyridines are the safer pairing with a beta-blocker</text>
+    </svg>
+  );
+}
+
+// 42. Nitrate mechanism: NO/cGMP pathway
+export function NitrateDiagram() {
+  return (
+    <svg viewBox="0 0 460 282" className="w-full" role="img" aria-label="Organic nitrate nitric oxide cGMP pathway causing venodilation and reduced preload" >
+      <ArrowDefs />
+      <Step x={145} y={8} w={170} h={40} label="Organic nitrate" sub="glyceryl trinitrate, isosorbide" color={violet} />
+      <Arrow x1={230} y1={48} x2={230} y2={70} />
+      <Step x={145} y={70} w={170} h={40} label="Converted to nitric oxide (NO)" sub="in vascular smooth muscle" color={amber} />
+      <Arrow x1={230} y1={110} x2={230} y2={132} />
+      <Step x={145} y={132} w={170} h={40} label="Activates guanylyl cyclase" sub="↑ cGMP" color={teal} />
+      <BlockMarker x={315} y={152} labelDx={12} label={["Sildenafil also ↑ cGMP —", "combined use → severe hypotension"]} />
+      <Arrow x1={230} y1={172} x2={230} y2={194} />
+      <Step x={105} y={194} w={250} h={40} label="Venodilation → ↓ preload" sub="↓ myocardial O2 demand" color={emerald} />
+
+      <text x="230" y="254" textAnchor="middle" fontSize="8" fontWeight={700} fill="var(--color-muted-foreground)">Nitrates and PDE5 inhibitors (sildenafil) are an absolute combination —</text>
+      <text x="230" y="266" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">both raise cGMP through different mechanisms, risking dangerous hypotension</text>
+    </svg>
+  );
+}
+
+// 43. Statin mechanism: HMG-CoA reductase inhibition and LDL receptor upregulation
+export function StatinDiagram() {
+  return (
+    <svg viewBox="0 0 460 344" className="w-full" role="img" aria-label="Statin mechanism of HMG-CoA reductase inhibition leading to LDL receptor upregulation" >
+      <ArrowDefs />
+      <Step x={145} y={8} w={170} h={40} label="Hepatocyte cholesterol synthesis" color={violet} />
+      <Arrow x1={230} y1={48} x2={230} y2={70} />
+      <Step x={145} y={70} w={170} h={40} label="HMG-CoA reductase" sub="rate-limiting enzyme" color={amber} />
+      <BlockMarker x={315} y={90} labelDx={12} label={["Statins competitively", "inhibit this enzyme"]} />
+      <Arrow x1={230} y1={110} x2={230} y2={132} />
+      <Step x={145} y={132} w={170} h={40} label="↓ Intracellular cholesterol" sub="compensatory response triggered" color={teal} />
+      <Arrow x1={230} y1={172} x2={230} y2={194} />
+      <Step x={145} y={194} w={170} h={40} label="↑ LDL receptor expression" sub="on the hepatocyte surface" color={rose} />
+      <Arrow x1={230} y1={234} x2={230} y2={256} />
+      <Step x={105} y={256} w={250} h={40} label="↑ LDL uptake from blood" sub="↓ serum LDL cholesterol" color={emerald} />
+
+      <text x="230" y="316" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">Myopathy/rhabdomyolysis risk rises when statins are combined with fibrates</text>
+      <text x="230" y="328" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">or CYP3A4 inhibitors, which raise statin plasma levels</text>
+    </svg>
+  );
+}
+
+// 44. Antiemetic mechanisms at the CTZ and vomiting center
+export function AntiemeticDiagram() {
+  return (
+    <svg viewBox="0 0 460 282" className="w-full" role="img" aria-label="Antiemetic mechanisms at the chemoreceptor trigger zone and vomiting center" >
+      <ArrowDefs />
+      <Step x={145} y={8} w={170} h={40} label="Emetic stimulus" sub="chemo, motion, post-op, GI irritation" color={violet} />
+      <Arrow x1={230} y1={48} x2={230} y2={70} />
+      <Step x={145} y={70} w={170} h={40} label="Chemoreceptor trigger zone" sub="outside the blood-brain barrier" color={amber} />
+      <BlockMarker x={145} y={90} labelDx={-12} label={["5-HT3 antagonists", "(ondansetron) block here"]} />
+      <BlockMarker x={315} y={90} labelDx={12} label={["D2 antagonists", "(metoclopramide) block here"]} />
+      <Arrow x1={230} y1={110} x2={230} y2={132} />
+      <Step x={145} y={132} w={170} h={40} label="Vomiting center activated" sub="medulla" color={rose} />
+      <Arrow x1={230} y1={172} x2={230} y2={194} />
+      <Step x={105} y={194} w={250} h={40} label="Nausea and vomiting" color={emerald} />
+
+      <text x="230" y="254" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">Ondansetron can prolong the QT interval — worth checking other</text>
+      <text x="230" y="266" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">QT-prolonging drugs before adding it</text>
+    </svg>
+  );
+}
+
+// 45. Laxative mechanisms compared: bulk-forming, osmotic, stimulant
+export function LaxativeDiagram() {
+  return (
+    <svg viewBox="0 0 460 254" className="w-full" role="img" aria-label="Laxative mechanisms compared: bulk-forming, osmotic, and stimulant action in the colon" >
+      <ArrowDefs />
+      <Step x={145} y={8} w={170} h={40} label="Colon" color={violet} />
+      <BlockMarker x={145} y={28} labelDx={-12} label={["Bulk-forming (psyllium) —", "absorbs water, ↑ stool mass"]} />
+      <BlockMarker x={315} y={28} labelDx={12} label={["Osmotic (lactulose, PEG) —", "retains water in the lumen"]} />
+      <Arrow x1={230} y1={48} x2={230} y2={70} />
+      <Step x={145} y={70} w={170} h={40} label="Stimulant laxatives" sub="bisacodyl, senna" color={amber} />
+      <BlockMarker x={315} y={90} labelDx={12} label={["Directly stimulate enteric", "nerves → ↑ motility"]} />
+      <Arrow x1={230} y1={110} x2={230} y2={132} />
+      <Step x={105} y={132} w={250} h={40} label="↑ Stool water content + motility" sub="→ defecation" color={emerald} />
+
+      <text x="230" y="192" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">Bulk-forming agents need adequate fluid intake to work — without it,</text>
+      <text x="230" y="204" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">they can worsen obstruction instead of relieving constipation</text>
+    </svg>
+  );
+}
+
+// 46. Opioid tolerance and dependence: receptor downregulation and desensitization
+export function OpioidToleranceDiagram() {
+  return (
+    <svg viewBox="0 0 460 344" className="w-full" role="img" aria-label="Opioid tolerance and dependence mechanism through receptor desensitization and downregulation" >
+      <ArrowDefs />
+      <Step x={145} y={8} w={170} h={40} label="Chronic opioid exposure" sub="repeated mu-receptor activation" color={violet} />
+      <Arrow x1={230} y1={48} x2={230} y2={70} />
+      <Step x={145} y={70} w={170} h={40} label="Receptor desensitization" sub="uncouples from G-protein" color={amber} />
+      <Arrow x1={230} y1={110} x2={230} y2={132} />
+      <Step x={145} y={132} w={170} h={40} label="Receptor downregulation" sub="↓ receptor number at the membrane" color={teal} />
+      <BlockMarker x={315} y={152} labelDx={12} label={["Higher doses now needed for", "the same effect = tolerance"]} />
+      <Arrow x1={230} y1={172} x2={230} y2={194} />
+      <Step x={145} y={194} w={170} h={40} label="Compensatory cAMP upregulation" sub="opposes chronic Gi inhibition" color={rose} />
+      <BlockMarker x={145} y={214} labelDx={-12} label={["Abrupt cessation → cAMP", "rebound = withdrawal syndrome"]} />
+      <Arrow x1={230} y1={234} x2={230} y2={256} />
+      <Step x={105} y={256} w={250} h={40} label="Tolerance + physical dependence" color={emerald} />
+
+      <text x="230" y="316" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">Tolerance to analgesia develops faster than tolerance to respiratory</text>
+      <text x="230" y="328" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">depression — a key reason escalating opioid doses can become dangerous</text>
+    </svg>
+  );
+}
+
