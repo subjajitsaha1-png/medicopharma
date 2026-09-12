@@ -588,29 +588,32 @@ export function GabaReceptorDiagram() {
 // 19. Diuretic sites of action along the nephron
 export function NephronDiureticDiagram() {
   return (
-    <svg viewBox="0 0 380 210" className="w-full" role="img" aria-label="Diuretic drug classes mapped onto their nephron sites of action">
+    <svg viewBox="0 0 460 336" className="w-full" role="img" aria-label="Diuretic drug classes mapped onto their nephron sites of action, from the proximal tubule to the collecting duct">
       <ArrowDefs />
-      <path d="M 40 20 C 40 20, 20 55, 40 80 L 120 80 C 160 80, 160 40, 190 40 C 230 40, 230 100, 270 100 L 310 100 C 330 100, 330 140, 300 150 L 200 150 C 170 150, 170 180, 140 180" fill="none" stroke="var(--color-muted-foreground)" strokeWidth={2.2} opacity={0.55} />
-      <circle cx={40} cy={20} r={9} fill="none" stroke="var(--color-muted-foreground)" strokeWidth={1.8} opacity={0.6} />
-      <text x={40} y={12} textAnchor="middle" fontSize="7" fill="var(--color-muted-foreground)">Glomerulus</text>
-      <text x={70} y={72} fontSize="7.5" fill="var(--color-muted-foreground)">Proximal tubule</text>
-      <text x={195} y="30" textAnchor="middle" fontSize="7.5" fill="var(--color-muted-foreground)">Loop of Henle</text>
-      <text x={280} y="95" fontSize="7.5" fill="var(--color-muted-foreground)">Distal tubule</text>
-      <text x={155} y="195" fontSize="7.5" fill="var(--color-muted-foreground)">Collecting duct</text>
+      <Step x={145} y={8} w={170} h={36} label="Glomerulus" sub="filtration begins" color={blue} />
+      <Arrow x1={230} y1={44} x2={230} y2={54} />
 
-      <Step x={50} y={95} w={90} h={38} label="Acetazolamide" sub="carbonic anhydrase" color={violet} />
-      <Arrow x1={95} y1={95} x2={70} y2={80} />
+      <Step x={145} y={54} w={170} h={36} label="Proximal tubule" sub="~65% of Na+/HCO3- reabsorbed" color={teal} />
+      <BlockMarker x={145} y={72} labelDx={-12} label={["Acetazolamide", "↓ HCO3- reabsorption"]} />
+      <BlockMarker x={315} y={72} labelDx={12} label={["Mannitol (osmotic) —", "↓ water reabsorption"]} />
+      <Arrow x1={230} y1={90} x2={230} y2={110} />
 
-      <Step x={230} y={10} w={100} h={38} label="Loop diuretics" sub="Na-K-2Cl symporter" color={rose} />
-      <Arrow x1={260} y1={48} x2={230} y2={45} />
+      <Step x={145} y={110} w={170} h={36} label="Descending thin limb" sub="water reabsorbed, no Na+ transport" color={violet} />
+      <Arrow x1={230} y1={146} x2={230} y2={156} />
 
-      <Step x={230} y={110} w={100} h={38} label="Thiazides" sub="Na-Cl symporter (DCT)" color={amber} />
-      <Arrow x1={280} y1={110} x2={280} y2={100} />
+      <Step x={145} y={156} w={170} h={36} label="Thick ascending limb" sub="Na-K-2Cl symporter" color={rose} />
+      <BlockMarker x={315} y={174} labelDx={12} label={["Loop diuretics", "(furosemide, bumetanide)"]} />
+      <Arrow x1={230} y1={192} x2={230} y2={202} />
 
-      <Step x={40} y={150} w={95} h={44} label="K+-sparing" sub="ENaC / aldosterone antagonist" color={emerald} />
-      <Arrow x1={135} y1={170} x2={155} y2={175} />
+      <Step x={145} y={202} w={170} h={36} label="Distal convoluted tubule" sub="Na-Cl symporter" color={amber} />
+      <BlockMarker x={315} y={220} labelDx={12} label={["Thiazides", "(hydrochlorothiazide)"]} />
+      <Arrow x1={230} y1={238} x2={230} y2={248} />
 
-      <text x="190" y="205" textAnchor="middle" fontSize="8" fontWeight={700} fill="var(--color-muted-foreground)">Loop diuretics act earliest and are most potent; thiazides and K+-sparing agents act further downstream</text>
+      <Step x={145} y={248} w={170} h={36} label="Collecting duct" sub="ENaC, aldosterone-sensitive" color={emerald} />
+      <BlockMarker x={315} y={266} labelDx={12} label={["K+-sparing agents", "(spironolactone, amiloride)"]} />
+
+      <text x="230" y="306" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">Loop diuretics act where the most Na+ is normally reabsorbed (~25%) — the most potent class</text>
+      <text x="230" y="318" textAnchor="middle" fontSize="8" fill="var(--color-muted-foreground)">Mannitol works osmotically, without blocking any specific transporter</text>
     </svg>
   );
 }
