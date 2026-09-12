@@ -9,6 +9,7 @@ import { TopicOverviewSection } from "@/components/topic-overview";
 import { PracticalViva } from "@/components/practical-viva";
 import { DrugClassification } from "@/components/drug-classification";
 import { TOPIC_PALETTE } from "@/lib/palette";
+import { topicColor } from "@/lib/topic-color";
 import {
   exportProgress,
   getOrInitCard,
@@ -91,11 +92,6 @@ import {
 
 type Tab = "sheets" | "flashcards" | "diagrams" | "reference" | "practical" | "classification";
 const THEME_KEY = "pharmacology-theme";
-
-function topicColor(topicId: string) {
-  const index = TOPICS.findIndex((t) => t.id === topicId);
-  return TOPIC_PALETTE[(index < 0 ? 0 : index) % TOPIC_PALETTE.length]!;
-}
 
 function useDarkMode() {
   const [dark, setDark] = useState(() => typeof document !== "undefined" && document.documentElement.classList.contains("dark"));

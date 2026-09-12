@@ -216,7 +216,7 @@ export function AntiarrhythmicDiagram() {
   );
 }
 
-// 6. Coagulation cascade: intrinsic/extrinsic → common pathway, with anticoagulant sites
+// 7. Coagulation cascade: intrinsic/extrinsic → common pathway, with anticoagulant sites
 export function CoagulationDiagram() {
   return (
     <svg viewBox="0 0 460 320" className="w-full" role="img" aria-label="Coagulation cascade from intrinsic and extrinsic pathways through the common pathway, with heparin, warfarin, and DOAC sites of action marked">

@@ -2,13 +2,9 @@ import { useMemo, useState } from "react";
 import { ChevronDown, ListTree, Search } from "lucide-react";
 import { TOPICS } from "@/data/facts";
 import { DRUG_CLASSIFICATION, type ClassNode, type ClassificationSection } from "@/data/drug-classification";
-import { TOPIC_PALETTE, type PaletteColor } from "@/lib/palette";
+import { type PaletteColor } from "@/lib/palette";
+import { topicColor } from "@/lib/topic-color";
 import { BoxedSection } from "@/components/section-block";
-
-function topicColor(topicId: string) {
-  const index = TOPICS.findIndex((t) => t.id === topicId);
-  return TOPIC_PALETTE[(index < 0 ? 0 : index) % TOPIC_PALETTE.length]!;
-}
 
 function matches(node: ClassNode, q: string): boolean {
   if (!q) return true;

@@ -3,6 +3,7 @@ import { FileText, Microscope, Eye, MessageCircleQuestion } from "lucide-react";
 import { TOPICS } from "@/data/facts";
 import { PRESCRIPTION_TOPICS, CAL_EXPERIMENTS, SPOTTERS, VIVA_TOPICS } from "@/data/practical-viva";
 import { TOPIC_PALETTE, type PaletteColor } from "@/lib/palette";
+import { topicColor } from "@/lib/topic-color";
 import { Button } from "@/components/ui/button";
 import { BoxedSection, SectionHeader, SectionBody } from "@/components/section-block";
 
@@ -11,11 +12,6 @@ type SubTab = "prescriptions" | "cal" | "spotters" | "viva";
 const PRESCRIPTION_COLOR = TOPIC_PALETTE[8]!;
 const CAL_COLOR = TOPIC_PALETTE[9]!;
 const SPOTTER_COLOR = TOPIC_PALETTE[10]!;
-
-function topicColor(topicId: string) {
-  const index = TOPICS.findIndex((t) => t.id === topicId);
-  return TOPIC_PALETTE[(index < 0 ? 0 : index) % TOPIC_PALETTE.length]!;
-}
 
 function SubTabButton({ active, onClick, icon, label, count }: { active: boolean; onClick: () => void; icon: React.ReactNode; label: string; count: number }) {
   return (
